@@ -6,8 +6,16 @@ h1:focus {
     outline: none;
 }
 
+h1 {
+    color : whitesmoke;
+}
+
 a, .btn-link {
     color: #0071c1;
+}
+
+default-background-color {
+    background-color: #404040;
 }
 
 .btn-primary {
