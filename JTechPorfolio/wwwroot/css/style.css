@@ -1,0 +1,16 @@
+﻿body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    color: whitesmoke;
+}
+
+.default-card{
+    background-color: whitesmoke;
+}
+
+.default-card:hover {
+    cursor: pointer;
+    opacity: 0.80;
+}

@@ -4,8 +4,11 @@
     body {
         background-color: #252525;
     }
-    h1 {
+    h1, h3, li {
         color: whitesmoke;
+    }
+    ol {
+        list-style-type: none;
     }
 </style>
 
@@ -13,24 +16,33 @@
 @* <h1>Joel's Porfolio</h1> *@
 
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <img class="card-img-top fa fa-user" />
+    <div class="card">
+        <div class="card-header">
+            <img class="card-img-top fa fa-user" />
 
-                </div>
-                <div class="card-body">
-                    <p>
-                        Hola mi nombre es Joel Santos Reyes mi lenguaje primario es español pero tambien hablo inglés,
-                        soy una persona apasionada con la programación, empezé utilizando Python 3 aprendi los fundamentos
-                        hasta llegue a crear video juegos luego, 2 años despues aprendi a usar C# y el lenguage que utilizo
-                        actualmente y tengo +6 años de experiencia.  Utilizo Xamarin, .NET MAUI y Blazor para crear apps y web apps
-                        y e hecho trabajos de producción con esas tecnologias.  Tambien trabajo con HTML5, CSS y JS, lo cual son los
-                        lenguajes que utilizo para mi pagina web.  Estoy siempre listo y dispuesto a aprender nuevas cosas todo el tiempo.
-                    </p>
-                </div>
-            </div>
+        </div>
+        <div class="card-body">
+            <p>
+                Hola mi nombre es Joel Santos Reyes mi lenguaje primario es español pero tambien hablo inglés,
+                soy una persona apasionada con la programación, empezé utilizando Python 3 aprendi los fundamentos
+                hasta llegue a crear video juegos luego, 2 años despues aprendi a usar C# y el lenguage que utilizo
+                actualmente y tengo +6 años de experiencia.  Utilizo Xamarin, .NET MAUI y Blazor para crear apps y web apps
+                y e hecho trabajos de producción con esas tecnologias.  Tambien trabajo con HTML5, CSS y JS, lo cual son los
+                lenguajes que utilizo para mi pagina web.  Estoy siempre listo y dispuesto a aprender nuevas cosas todo el tiempo.
+            </p>
         </div>
     </div>
+
+    <div class="container container-lg m-3">
+        <h3>Skills</h3>
+        <ol>
+            <li><p class="fa fa-code text-white"></p> C#</li>
+            <li><p class="fa fa-html5 text-white"></p> HTML</li>
+            <li><p class="fa-brands fa-css3-alt text-white"></p> CSS</li>
+            <li><p class="fa-brands fa-js text-white"></p> Java Script</li>
+            <li>@@ Blazor</li>
+            <li><p class="fa-solid fa-network-wired text-white"></p> Networking</li>
+        </ol>
+    </div>
+
 </div>

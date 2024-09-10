@@ -1,8 +1,54 @@
 ﻿@page "/project"
 
+<style>
+    .default-card {
+        background-color: whitesmoke;
+    }
+
+    .default-card:hover {
+        cursor: pointer;
+        opacity: 0.60;
+    }
+</style>
+
 <PageTitle>Joel's Porfolio | Projects</PageTitle>
 
 <h3>Project</h3>
+
+<div class="container d-flex justify-content-around">
+
+    <div class="card default-card m-2">
+        <div class="card-header" style="background-color: transparent;">
+            <img class="card-img-top" src="/images/login.jpg" />
+        </div>
+        <div class="card-title d-flex align-items-center p-2" style="background-color: lightgray">
+            <h3>BlazePOS</h3>
+            @* <img src="/images/blazeposLogo-lg.png" class="card-img justify-content-center" style="width: 40px; height: 40px;"/> *@
+        </div>
+        <div class="card-body">
+            <p>
+                This is BlazePOS my most complete project is a fully functional Point of Sale System
+                suitable from small to medium sized business.
+            </p>
+        </div>
+    </div>
+
+    <div class="card default-card m-2">
+        <div class="card-header" style="background-color: transparent;">
+            <img class="card-img-top" src="/images/login.jpg" />
+        </div>
+        <div class="card-title d-flex align-items-center p-2" style="background-color: lightgray">
+            <h3>BlazePOS</h3>
+            @* <img src="/images/blazeposLogo-lg.png" class="card-img justify-content-center" style="width: 40px; height: 40px;"/> *@
+        </div>
+        <div class="card-body">
+            <p>
+                This is BlazePOS my most complete project is a fully functional Point of Sale System
+                suitable from small to medium sized business.
+            </p>
+        </div>
+    </div>
+</div>
 
 @code {
 
