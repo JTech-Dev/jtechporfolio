@@ -1,25 +1,19 @@
 ﻿@page "/task"
 
-<style>
-    .form-inline {
-        display: inline-block;
-        width: auto;
-        vertical-align: middle;
-    }
-</style>
-
 <h3>TaskList</h3>
 
 @if (taskList.Count > 0)
 {
     <div class="progress my-2">
         <div class="progress-bar" role="progressbar" style="width: @percentProgress%"
-        aria-valuemin="0" aria-valuemax="100">@percentProgress%</div>
+             aria-valuemin="0" aria-valuemax="100">
+            @percentProgress%
+        </div>
     </div>
 }
 
-<EditForm class="my-2 mx-auto"  Model="@newTask" OnValidSubmit="AddTask">
-    <InputText class="form-control mx-2" style="width: 50%" @bind-Value="newTask.Task" />
+<EditForm class="my-2 mx-auto" Model="@newTask" OnValidSubmit="AddTask">
+    <InputText class="form-control mx-2" style="width: 50%;" @bind-Value="newTask.Task" />
     <button class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
 
 </EditForm>
@@ -30,14 +24,15 @@
         @if (task.IsComplete)
         {
             <li class="list-group-item list-group-item-secondary  my-1"
-            @onclick="(() => task.IsComplete = !task.IsComplete)">
-            <del>@task.Task</del>
+                @onclick="(() => task.IsComplete = !task.IsComplete)">
+                <del>@task.Task</del>
             </li>
         }
         else
         {
             <li class="list-group-item list-group-item-success my-1"
-            @onclick="(() => task.IsComplete = !task.IsComplete)">@task.Task
+                @onclick="(() => task.IsComplete = !task.IsComplete)">
+                @task.Task
             </li>
         }
     }
@@ -57,6 +52,9 @@
 
     private void AddTask()
     {
+        if (string.IsNullOrWhiteSpace(newTask.Task))
+            return;
+
         taskList.Add(newTask);
 
         newTask = new();

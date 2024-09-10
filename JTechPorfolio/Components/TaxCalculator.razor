@@ -1,0 +1,69 @@
+﻿@page "/tax"
+
+<h3>Tax Calculator</h3>
+
+<EditForm class="row my-2 mx-auto" Model="@newTax" OnValidSubmit="CalculateTax">
+    <InputNumber class="m-2 [&::-webkit-inner-spin-button]:appearance-none" @bind-Value="newTax.InputAmount" placeholder="Input Amount" />
+    <InputNumber class="col m-2 [&::-webkit-inner-spin-button]:appearance-none" @bind-Value="newTax.TaxOneAmount" placeholder="Tax #1" />
+    <InputNumber class="col m-2 [&::-webkit-inner-spin-button]:appearance-none" @bind-Value="newTax.TaxTwoAmount" placeholder="Tax #2" />
+    <InputNumber class="col m-2 [&::-webkit-inner-spin-button]:appearance-none" @bind-Value="newTax.TaxThreeAmount" placeholder="Tax #3" />
+    <InputNumber class="col m-2 [&::-webkit-inner-spin-button]:appearance-none" @bind-Value="newTax.TaxFourAmount" placeholder="Tax #4" />
+
+    <div>
+        <button class="col-1 my-2 btn btn-outline-primary w-25" type="submit">Calculate</button>
+    </div>
+</EditForm>
+
+<button onclick="@ClearValues" class="btn btn-outline-danger" type="submit">Clear</button>
+
+@if (totalAmount > 0)
+{
+    <div>
+        <h5>Tax #1: $@taxOneAmount</h5>
+        <h5>Tax #2: $@taxTwoAmount</h5>
+        <h5>Tax #3: $@taxThreeAmount</h5>
+        <h5>Tax #4: $@taxFourAmount</h5>
+        <hr/>
+        <h3 style="color: darkgreen;">Total: $@totalAmount</h3>
+    </div>
+}
+
+@code {
+    TaxCalculatorModel newTax = new();
+    decimal totalAmount = 0;
+
+    decimal taxOneAmount = 0m;
+    decimal taxTwoAmount = 0m;
+    decimal taxThreeAmount = 0m;
+    decimal taxFourAmount = 0m;
+
+    private void CalculateTax()
+    {
+        if (newTax.InputAmount > 0)
+        {
+            if (newTax.TaxOneAmount > 0)
+                taxOneAmount = Math.Round(newTax.InputAmount * (newTax.TaxOneAmount / 100), 2);
+
+            if (newTax.TaxTwoAmount > 0)
+                taxTwoAmount = Math.Round(newTax.InputAmount * (newTax.TaxTwoAmount / 100), 2);
+
+            if (newTax.TaxThreeAmount > 0)
+                taxThreeAmount = Math.Round(newTax.InputAmount * (newTax.TaxThreeAmount / 100),2);
+
+            if (newTax.TaxFourAmount > 0)
+                taxFourAmount = Math.Round(newTax.InputAmount * (newTax.TaxFourAmount / 100),2);
+
+            totalAmount = newTax.InputAmount + taxOneAmount + taxTwoAmount + taxThreeAmount + taxFourAmount;
+        }
+    }
+
+    private void ClearValues()
+    {
+        newTax = new();
+        totalAmount = 0;
+        taxOneAmount = 0m;
+        taxTwoAmount = 0m;
+        taxThreeAmount = 0m;
+        taxFourAmount = 0m;
+    }
+}

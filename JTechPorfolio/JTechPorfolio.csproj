@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 
-	  <WasmEnableExceptionHandling>false</WasmEnableExceptionHandling>
-	  <WasmEnableSIMD>false</WasmEnableSIMD>
+	  <!--<WasmEnableExceptionHandling>false</WasmEnableExceptionHandling>
+	  <WasmEnableSIMD>false</WasmEnableSIMD>-->
   </PropertyGroup>
 
   <ItemGroup>
