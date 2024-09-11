@@ -1,8 +1,28 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    @* <div class="sidebar">
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar>
+        Joel Santos Porfolio
+        <MudSpacer />
+        <MudIconButton Style="" Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+    </MudAppBar>
+    <MudDrawer Open="@isDrawerOpen">
         <NavMenu />
-    </div> *@
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@* <div class="page">
+     <div class="sidebar">
+        <NavMenu />
+    </div> 
 
     <main>
         <div class="top-row px-4 bg-dark">
@@ -14,4 +34,13 @@
             @Body
         </article>
     </main>
-</div>
+</div> *@
+
+@code {
+    bool isDrawerOpen = true;
+
+    void DrawerToggle()
+    {
+        isDrawerOpen = !isDrawerOpen;
+    }
+}
