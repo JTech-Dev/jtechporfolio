@@ -1,0 +1,185 @@
+﻿@page "/calculator"
+
+<style>
+
+    .calculator-container {
+        width: 50%;
+        justify-content: center;
+        margin: 10px;
+    }
+
+    .calculator {
+        max-width: 200px;
+        margin: 20px auto;
+    }
+
+        .calculator input {
+            width: 100%;
+            text-align: right;
+            padding: 10px;
+            font-size: 1.5rem;
+        }
+
+    .button-panel {
+        display: flex;
+    }
+
+        .button-panel button {
+            flex: 1;
+            padding: 20px;
+            font-size: 1.5rem;
+            margin: 5px;
+            background-color: lightgray;
+        }
+
+    .operator-panel {
+        display: flex;
+    }
+
+        .operator-panel button {
+            flex: 1;
+            padding: 20px;
+            font-size: 1.5rem;
+            margin: 5px;
+        }
+
+        .operator-panel-color {
+            background-color: red;
+            margin: 5px;
+        }
+
+    .clear-button {
+        width: 100%;
+        background-color: red;
+        color: white;
+        padding: 10px;
+        font-size: 1.5rem;
+        flex: 3;
+    }
+
+    .clear-button button {
+        background-color: red;
+    }
+</style>
+
+<div class="calculator-container">
+    <h3>Calculator</h3>
+
+    <div class="calculator">
+        <input type="text" class="form-control" readonly value="@DisplayValue" />
+    </div>
+
+    <div class="button-panel">
+        <button class="clear-button" @onclick="Clear">C</button>
+        <button @onclick="@(() => AppendValue("/"))">/</button>
+    </div>
+
+    <div class="button-panel">
+        <button @onclick="@(() => AppendValue("7"))">7</button>
+        <button @onclick="@(() => AppendValue("8"))">8</button>
+        <button @onclick="@(() => AppendValue("9"))">9</button>
+        <button @onclick="@(() => AppendValue("*"))">*</button>
+    </div>
+
+    <div class="button-panel">
+        <button @onclick="@(() => AppendValue("4"))">4</button>
+        <button @onclick="@(() => AppendValue("5"))">5</button>
+        <button @onclick="@(() => AppendValue("6"))">6</button>
+        <button @onclick="@(() => AppendValue("-"))">-</button>
+    </div>
+
+    <div class="button-panel">
+        <button @onclick="@(() => AppendValue("1"))">1</button>
+        <button @onclick="@(() => AppendValue("2"))">2</button>
+        <button @onclick="@(() => AppendValue("3"))">3</button>
+        <button @onclick="@(() => AppendValue("+"))">+</button>
+    </div>
+
+    <div class="button-panel">
+        <button @onclick="@(() => AppendValue("0"))">0</button>
+        <button @onclick="@(() => AppendValue("00"))">00</button>
+        <button @onclick="@(() => AppendValue("."))">.</button>
+        <button @onclick="@(() => Calculate())">=</button>
+    </div>
+    
+</div>
+
+@code {
+    private string DisplayValue = "0";
+    private string InputValue = "";
+    private string OperatorValue = "";
+    private double ResultValue = 0;
+
+    private void AppendValue(string value)
+    {
+        if (InputValue.Contains('.') && value == ".")
+            return;
+
+        if (value == "+" || value == "-" || value == "*" || value == "/")
+        {
+            if (!string.IsNullOrWhiteSpace(InputValue))
+            {
+                ResultValue = double.Parse(InputValue);
+                InputValue = "";
+            }
+
+            OperatorValue = value;
+        }
+        else
+        {
+            InputValue += value;
+        }
+
+        DisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
+    }
+
+    private void Calculate()
+    {
+        if (string.IsNullOrWhiteSpace(InputValue) || string.IsNullOrWhiteSpace(OperatorValue))
+            return;
+
+        var secondOperand = double.Parse(InputValue);
+
+        switch (OperatorValue)
+        {
+            case "+":
+                ResultValue += secondOperand;
+                break;
+
+            case "-":
+                ResultValue -= secondOperand;
+                break;
+
+            case "*":
+                ResultValue *= secondOperand;
+                break;
+
+            case "/":
+                if (secondOperand != 0)
+                {
+                    ResultValue /= secondOperand;
+                }
+                else
+                {
+                    DisplayValue = "Cannot divide by zero";
+                    return;
+                }
+                break;
+
+            default:
+                return;
+        }
+
+        DisplayValue = ResultValue.ToString();
+        InputValue = "";
+        OperatorValue = "";
+    }
+
+    private void Clear()
+    {
+        InputValue = "";
+        OperatorValue = "";
+        ResultValue = 0;
+        DisplayValue = "";
+    }
+}
