@@ -6,7 +6,7 @@
 
 @if (taskList.Count > 0)
 {
-    <div class="progress my-2">
+    <div class="progress my-2 w-50">
         <div class="progress-bar" role="progressbar" style="width: @percentProgress%"
              aria-valuemin="0" aria-valuemax="100">
             @percentProgress%
@@ -14,35 +14,48 @@
     </div>
 }
 
-<EditForm class="my-2 mx-auto" Model="@newTask" OnValidSubmit="AddTask">
-    <InputText class="form-control mx-2" style="width: 50%;" @bind-Value="newTask.Task" />
-    <button class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
+<EditForm class="my-2 mx-2 w-50" Model="@newTask" OnValidSubmit="AddTask">
+    <InputText class="form-control mx-2 my-2 w-50" @bind-Value="taskTitle" />
+    <InputText class="form-control mx-2 my-2 w-50" @bind-Value="newTask.Task" />
 
+    <button class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
+    <button class="btn btn-outline-danger m-2" style="width: fit-content" type="submit" @onclick="@(() => ClearTask())">Add Task</button>
 </EditForm>
 
-<ul class="list-group">
-    @foreach (var task in taskList)
-    {
-        @if (task.IsComplete)
+@* <div class="m-2">
+    <button onclick="@AddTask" class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
+    <button onclick="@ClearTask" class="btn btn-outline-danger m-2" style="width: fit-content" type="submit">Clear Task</button>
+</div> *@
+
+<div class="m-2">
+
+    <MudText>@taskTitle</MudText>
+
+    <ul class="list-group">
+        @foreach (var task in taskList)
         {
-            <li class="list-group-item list-group-item-secondary  my-1"
-                @onclick="(() => task.IsComplete = !task.IsComplete)">
-                <del>@task.Task</del>
-            </li>
+            @if (task.IsComplete)
+            {
+                <li class="list-group-item list-group-item-secondary my-1 w-50"
+                    @onclick="(() => task.IsComplete = !task.IsComplete)">
+                    <del>@task.Task</del>
+                </li>
+            }
+            else
+            {
+                <li class="list-group-item list-group-item-success my-1 w-50"
+                    @onclick="(() => task.IsComplete = !task.IsComplete)">
+                    @task.Task
+                </li>
+            }
         }
-        else
-        {
-            <li class="list-group-item list-group-item-success my-1"
-                @onclick="(() => task.IsComplete = !task.IsComplete)">
-                @task.Task
-            </li>
-        }
-    }
-</ul>
+    </ul>
+</div>
 
 @code {
     private List<TaskModel> taskList = new();
     private TaskModel newTask = new();
+    private string? taskTitle = "";
 
     private int percentProgress
     {
@@ -59,6 +72,15 @@
 
         taskList.Add(newTask);
 
+        newTask = new();
+
+
+    }
+
+    private void ClearTask()
+    {
+        taskTitle = "";
+        taskList = new();
         newTask = new();
     }
 }

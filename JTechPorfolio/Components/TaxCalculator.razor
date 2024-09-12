@@ -1,24 +1,30 @@
 ﻿@page "/tax"
 
+<style>
+    body {
+        background-color: whitesmoke;
+    }
+</style>
+
 <PageTitle>JTech Porfolio | Tax Calculator</PageTitle>
 
 <EditForm class="row my-2 mx-2" Model="@newTax" OnValidSubmit="CalculateTax">
     <MudGrid>
         <MudItem>
-            <MudNumericField T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-            Immediate="false" Label="Input Amount" Format="N2" @bind-Value="newTax.InputAmount" Class="my-2"/>
+            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+            Immediate="false" Label="Input Amount" Format="N2" @bind-Value="newTax.InputAmount" Class="my-lg-5"/>
 
-            <MudNumericField T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #1" Format="N2" @bind-Value="newTax.TaxOneAmount" Class="my-2" />
+            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                             Immediate="false" Label="Tax #1" Format="N2" @bind-Value="newTax.TaxOneAmount" Class="my-md-5" />
 
-            <MudNumericField T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #2" Format="N2" @bind-Value="newTax.TaxTwoAmount" Class="my-2"/>
+            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                             Immediate="false" Label="Tax #2" Format="N2" @bind-Value="newTax.TaxTwoAmount" Class="my-md-5"/>
 
-            <MudNumericField T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #3" Format="N2" @bind-Value="newTax.TaxThreeAmount" Class="my-2"/>
+            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                             Immediate="false" Label="Tax #3" Format="N2" @bind-Value="newTax.TaxThreeAmount" Class="my-md-5"/>
 
-            <MudNumericField T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #4" Format="N2" @bind-Value="newTax.TaxFourAmount" Class="my-2" />
+            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                             Immediate="false" Label="Tax #4" Format="N2" @bind-Value="newTax.TaxFourAmount" Class="my-md-5" />
         </MudItem>
 
         @* <MudItem>
@@ -38,40 +44,63 @@
 </EditForm>
 
 <MudGrid class="m-2">
-    <MudItem xs="1">
+    <MudItem>
         <MudButton Variant="Variant.Outlined" OnClick="CalculateTax" Color="Color.Primary">Calculate</MudButton>
     </MudItem>
-    <MudItem xs="1">
+    <MudItem>
         <MudButton Variant="Variant.Outlined" OnClick="ClearValues" Color="Color.Error">Clear</MudButton>
     </MudItem>
 </MudGrid>
 
 <MudDivider />
-@* <button onclick="@ClearValues" class="btn btn-outline-danger" type="submit">Clear</button> *@
 
 @if (totalAmount > 0)
 {
     <MudGrid Class="m-1">
-        <MudItem>
-            <MudText>Tax #1 Amount: $@taxOneAmount</MudText>
+        <MudItem Class="my-2" xs="3">
+           @*  <MudText>Tax #1 Amount: $@taxOneAmount</MudText> *@
+            <MudPaper Class="border-solid p-3">
+                Tax #1 Amount: $@taxOneAmount
+            </MudPaper>
         </MudItem>
 
-        <MudItem>
-            <MudText>Tax #2 Amount: $@taxTwoAmount</MudText>
+        <MudItem Class="my-2" xs="3">
+            @* <MudText>Tax #2 Amount: $@taxTwoAmount</MudText> *@
+            <MudPaper Class="border-solid p-3">
+                Tax #2 Amount: $@taxTwoAmount
+            </MudPaper>
         </MudItem>
 
-        <MudItem>
-            <MudText>Tax #3 Amount: $@taxThreeAmount</MudText>
+        <MudFlexBreak />
+
+        <MudItem Class="my-2" xs="3">
+            <MudPaper Class="border-solid p-3">
+                Tax #3 Amount: $@taxThreeAmount
+            </MudPaper>
         </MudItem>
 
-        <MudItem>
-            <MudText>Tax #4 Amount: $@taxFourAmount</MudText>
+        <MudItem Class="my-2" xs="3">
+            @* <MudText>Tax #4 Amount: $@taxFourAmount</MudText> *@
+            <MudPaper Class="border-solid p-3">
+                Tax #4 Amount: $@taxFourAmount
+            </MudPaper>
+        </MudItem>
+
+        <MudFlexBreak />
+
+        <MudItem Class="my-2" xs="6">
+            <MudPaper Class="border-solid p-3">
+                Total Tax Amount: $@totalTax
+            </MudPaper>
+            @* <MudText>Total Tax Amount: $@totalTax</MudText> *@
         </MudItem>
 
         <MudDivider />
 
-        <MudItem>
-            <MudText Color="Color.Info" style="color: darkgreen;">Total: $@totalAmount</MudText>
+        <MudItem Class="my-2" xs="6">
+            <MudPaper Style="background-color: darkgreen" Class="border-solid p-3">
+                <MudText style="color: white;">Total: $@totalAmount</MudText>
+            </MudPaper>
         </MudItem>
     </MudGrid>
 }
@@ -85,23 +114,58 @@
     decimal taxThreeAmount = 0m;
     decimal taxFourAmount = 0m;
 
+    decimal totalTax = 0m;
+
     private void CalculateTax()
     {
         if (newTax.InputAmount > 0)
         {
             if (newTax.TaxOneAmount > 0)
-                taxOneAmount = Math.Round(newTax.InputAmount * (newTax.TaxOneAmount / 100), 2);
+            {
+                string taxOne = (newTax.InputAmount * (newTax.TaxOneAmount / 100)).ToString("N2");
+
+                decimal taxValue = 0m;
+                bool isValid = decimal.TryParse(taxOne, out taxValue);
+
+                if (isValid)
+                    taxOneAmount = taxValue;
+            }
 
             if (newTax.TaxTwoAmount > 0)
-                taxTwoAmount = Math.Round(newTax.InputAmount * (newTax.TaxTwoAmount / 100), 2);
+            {
+                string taxTwo = (newTax.InputAmount * (newTax.TaxTwoAmount / 100)).ToString("N2");
+
+                decimal taxValue = 0m;
+                bool isValid = decimal.TryParse(taxTwo, out taxValue);
+
+                if (isValid)
+                    taxTwoAmount = taxValue;
+            }
 
             if (newTax.TaxThreeAmount > 0)
-                taxThreeAmount = Math.Round(newTax.InputAmount * (newTax.TaxThreeAmount / 100),2);
+            {
+                string taxThree = (newTax.InputAmount * (newTax.TaxThreeAmount / 100)).ToString("N2");
+
+                decimal taxValue = 0m;
+                bool isValid = decimal.TryParse(taxThree, out taxValue);
+
+                if (isValid)
+                    taxThreeAmount = taxValue;
+            }
 
             if (newTax.TaxFourAmount > 0)
-                taxFourAmount = Math.Round(newTax.InputAmount * (newTax.TaxFourAmount / 100),2);
+            {
+                string taxFour = (newTax.InputAmount * (newTax.TaxFourAmount / 100)).ToString("N2");
 
-            totalAmount = newTax.InputAmount + taxOneAmount + taxTwoAmount + taxThreeAmount + taxFourAmount;
+                decimal taxValue = 0m;
+                bool isValid = decimal.TryParse(taxFour, out taxValue);
+
+                if (isValid)
+                    taxFourAmount = taxValue;
+            }
+
+            totalTax = taxOneAmount + taxTwoAmount + taxThreeAmount + taxFourAmount;
+            totalAmount = newTax.InputAmount + totalTax;
         }
     }
 
@@ -113,5 +177,6 @@
         taxTwoAmount = 0m;
         taxThreeAmount = 0m;
         taxFourAmount = 0m;
+        totalTax = 0m;
     }
 }
