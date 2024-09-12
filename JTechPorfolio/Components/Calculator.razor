@@ -2,22 +2,45 @@
 
 <style>
 
+    .display-value {
+        background-color: lightgray;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .display-value-sm {
+        background-color: lightgray;
+    }
+
     .calculator-container {
-        width: 50%;
+        width: 25%;
         justify-content: center;
         margin: 10px;
     }
 
-    .calculator {
-        max-width: 200px;
-        margin: 20px auto;
+    .calculator-display {
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
-        .calculator input {
+        .calculator-display input {
             width: 100%;
             text-align: right;
             padding: 10px;
             font-size: 1.5rem;
+        }
+
+    .calculator-display-sm {
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: .50rem;
+    }
+
+        .calculator-display-sm input {
+            width: 100%;
+            text-align: right;
+            padding: 10px;
+            font-size: 1rem;
         }
 
     .button-panel {
@@ -65,13 +88,17 @@
 <div class="calculator-container">
     <h3>Calculator</h3>
 
-    <div class="calculator">
-        <input type="text" class="form-control" readonly value="@DisplayValue" />
+    <div class="calculator-display-sm">
+        <input type="text" class="display-value-sm" readonly value="@PreviusDisplayValue" />
+    </div>
+
+    <div class="calculator-display">
+        <input type="text" class="display-value" readonly value="@CurrentDisplayValue" />
     </div>
 
     <div class="button-panel">
         <button class="clear-button" @onclick="Clear">C</button>
-        <button @onclick="@(() => AppendValue("/"))">/</button>
+        <button @onclick="@(() => AppendValue("/"))">÷</button>
     </div>
 
     <div class="button-panel">
@@ -105,7 +132,8 @@
 </div>
 
 @code {
-    private string DisplayValue = "0";
+    private string CurrentDisplayValue = "0";
+    private string PreviusDisplayValue = "";
     private string InputValue = "";
     private string OperatorValue = "";
     private double ResultValue = 0;
@@ -121,6 +149,8 @@
             {
                 ResultValue = double.Parse(InputValue);
                 InputValue = "";
+                PreviusDisplayValue = $"{ResultValue} {value}";
+                CurrentDisplayValue = "";
             }
 
             OperatorValue = value;
@@ -128,9 +158,10 @@
         else
         {
             InputValue += value;
+            CurrentDisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
         }
 
-        DisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
+        //CurrentDisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
     }
 
     private void Calculate()
@@ -161,7 +192,7 @@
                 }
                 else
                 {
-                    DisplayValue = "Cannot divide by zero";
+                    CurrentDisplayValue = "Cannot divide by zero";
                     return;
                 }
                 break;
@@ -170,7 +201,9 @@
                 return;
         }
 
-        DisplayValue = ResultValue.ToString();
+        PreviusDisplayValue = $"{PreviusDisplayValue} {CurrentDisplayValue} = {ResultValue}";
+        CurrentDisplayValue = ResultValue.ToString();
+
         InputValue = "";
         OperatorValue = "";
     }
@@ -180,6 +213,7 @@
         InputValue = "";
         OperatorValue = "";
         ResultValue = 0;
-        DisplayValue = "";
+        CurrentDisplayValue = "";
+        PreviusDisplayValue = "";
     }
 }
