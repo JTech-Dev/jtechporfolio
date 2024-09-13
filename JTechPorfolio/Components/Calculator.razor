@@ -170,11 +170,12 @@
         else
         {
             InputValue += value;
+            CurrentDisplayValue = InputValue;
 
-            if (InputValue.Contains("."))
-                CurrentDisplayValue = InputValue;
-            else
-                CurrentDisplayValue = decimal.Parse(InputValue).ToString("N0", CultureInfo.CurrentCulture);
+            // if (InputValue.Contains("."))
+            //     CurrentDisplayValue = InputValue;
+            // else
+            //     CurrentDisplayValue = decimal.Parse(InputValue).ToString("N0", CultureInfo.CurrentCulture);
             //CurrentDisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
         }
     }
