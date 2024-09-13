@@ -2,6 +2,11 @@
 
 <style>
 
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
     .display-value {
         background-color: lightgray;
         font-size: 1.5rem;
@@ -13,9 +18,11 @@
     }
 
     .calculator-container {
-        width: 25%;
-        justify-content: center;
-        margin: 10px;
+        width: 100%;
+        margin: 20px auto;
+        border: 2px solid lightgray;
+        border-radius: 10px;
+        padding: 10px;
     }
 
     .calculator-display {
@@ -98,6 +105,7 @@
 
     <div class="button-panel">
         <button class="clear-button" @onclick="Clear">C</button>
+        <button @onclick="@(() => BackSpace())">◄</button>
         <button @onclick="@(() => AppendValue("/"))">÷</button>
     </div>
 
@@ -140,6 +148,9 @@
 
     private void AppendValue(string value)
     {
+        if (InputValue.Length > 15)
+            return;
+
         if (InputValue.Contains('.') && value == ".")
             return;
 
@@ -154,14 +165,18 @@
             }
 
             OperatorValue = value;
+            InputValue = "";
         }
         else
         {
             InputValue += value;
-            CurrentDisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
-        }
 
-        //CurrentDisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
+            if (InputValue.Contains("."))
+                CurrentDisplayValue = InputValue;
+            else
+                CurrentDisplayValue = decimal.Parse(InputValue).ToString("N0", CultureInfo.CurrentCulture);
+            //CurrentDisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
+        }
     }
 
     private void Calculate()
@@ -202,7 +217,7 @@
         }
 
         PreviusDisplayValue = $"{PreviusDisplayValue} {CurrentDisplayValue} = {ResultValue}";
-        CurrentDisplayValue = ResultValue.ToString();
+        CurrentDisplayValue = ResultValue.ToString(CultureInfo.InvariantCulture);
 
         InputValue = "";
         OperatorValue = "";
@@ -215,5 +230,23 @@
         ResultValue = 0;
         CurrentDisplayValue = "";
         PreviusDisplayValue = "";
+    }
+
+    private void BackSpace()
+    {
+        if (string.IsNullOrWhiteSpace(InputValue))
+            return;
+
+        if (InputValue.Count() > 1)
+        {
+            InputValue = InputValue.Substring(0, InputValue.Length - 1);
+            CurrentDisplayValue = InputValue;
+        }
+
+        else if (InputValue.Count() == 1)
+        {
+            InputValue = "";
+            CurrentDisplayValue = InputValue;
+        }
     }
 }
