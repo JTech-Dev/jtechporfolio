@@ -5,6 +5,7 @@
     body {
         display: flex;
         justify-content: center;
+        background-image: linear-gradient(#21618c, #117a65);
     }
 
     .display-value {
@@ -23,6 +24,7 @@
         border: 2px solid lightgray;
         border-radius: 10px;
         padding: 10px;
+        background-color: whitesmoke;
     }
 
     .calculator-display {
@@ -35,6 +37,8 @@
             text-align: right;
             padding: 10px;
             font-size: 1.5rem;
+            color: white;
+            background-color: #212121;
         }
 
     .calculator-display-sm {
@@ -48,6 +52,8 @@
             text-align: right;
             padding: 10px;
             font-size: 1rem;
+            color: lightgray;
+            background-color: #212121;
         }
 
     .button-panel {
@@ -62,6 +68,10 @@
             background-color: lightgray;
         }
 
+    .button-panel button:hover {
+        opacity: 0.50;
+    }
+
     .operator-panel {
         display: flex;
     }
@@ -71,25 +81,16 @@
             padding: 20px;
             font-size: 1.5rem;
             margin: 5px;
-        }
-
-        .operator-panel-color {
-            background-color: red;
-            margin: 5px;
+            background-color: orange;
         }
 
     .clear-button {
         width: 100%;
-        background-color: red;
         color: white;
         padding: 10px;
         font-size: 1.5rem;
-        flex: 3;
     }
 
-    .clear-button button {
-        background-color: red;
-    }
 </style>
 
 <div class="calculator-container">
@@ -104,37 +105,38 @@
     </div>
 
     <div class="button-panel">
-        <button class="clear-button" @onclick="Clear">C</button>
-        <button @onclick="@(() => BackSpace())">◄</button>
-        <button @onclick="@(() => AppendValue("/"))">÷</button>
+        <button class="clear-button" style="background-color: red;" @onclick="Clear">C</button>
+        <button style="background-color: orange;" @onclick="@(() => BackSpace())">←</button>
+        <button style="background-color: orange;" @onclick="@(() => BackSpace())">←</button>
+        <button style="background-color: orange;" @onclick="@(() => AppendValue("/"))">÷</button>
     </div>
 
     <div class="button-panel">
         <button @onclick="@(() => AppendValue("7"))">7</button>
         <button @onclick="@(() => AppendValue("8"))">8</button>
         <button @onclick="@(() => AppendValue("9"))">9</button>
-        <button @onclick="@(() => AppendValue("*"))">*</button>
+        <button style="background-color: orange;" @onclick="@(() => AppendValue("*"))">*</button>
     </div>
 
     <div class="button-panel">
         <button @onclick="@(() => AppendValue("4"))">4</button>
         <button @onclick="@(() => AppendValue("5"))">5</button>
         <button @onclick="@(() => AppendValue("6"))">6</button>
-        <button @onclick="@(() => AppendValue("-"))">-</button>
+        <button style="background-color: orange;" @onclick="@(() => AppendValue("-"))">-</button>
     </div>
 
     <div class="button-panel">
         <button @onclick="@(() => AppendValue("1"))">1</button>
         <button @onclick="@(() => AppendValue("2"))">2</button>
         <button @onclick="@(() => AppendValue("3"))">3</button>
-        <button @onclick="@(() => AppendValue("+"))">+</button>
+        <button style="background-color: orange;" @onclick="@(() => AppendValue("+"))">+</button>
     </div>
 
     <div class="button-panel">
         <button @onclick="@(() => AppendValue("0"))">0</button>
         <button @onclick="@(() => AppendValue("00"))">00</button>
         <button @onclick="@(() => AppendValue("."))">.</button>
-        <button @onclick="@(() => Calculate())">=</button>
+        <button style="background-color: orange;" @onclick="@(() => Calculate())">=</button>
     </div>
     
 </div>
@@ -142,6 +144,7 @@
 @code {
     private string CurrentDisplayValue = "0";
     private string PreviusDisplayValue = "";
+    private string PreviusValue = "";
     private string InputValue = "";
     private string OperatorValue = "";
     private double ResultValue = 0;
@@ -156,11 +159,15 @@
 
         if (value == "+" || value == "-" || value == "*" || value == "/")
         {
+            if (OperatorValue != null && !string.IsNullOrWhiteSpace(PreviusDisplayValue))
+                Calculate(value);
+
             if (!string.IsNullOrWhiteSpace(InputValue))
             {
                 ResultValue = double.Parse(InputValue);
                 InputValue = "";
-                PreviusDisplayValue = $"{ResultValue} {value}";
+                PreviusValue = UpdateCurrentDisplay(ResultValue.ToString());
+                PreviusDisplayValue = $"{PreviusValue} {(value == "/" ? "÷" : value)}";
                 CurrentDisplayValue = "";
             }
 
@@ -170,17 +177,11 @@
         else
         {
             InputValue += value;
-            CurrentDisplayValue = InputValue;
-
-            // if (InputValue.Contains("."))
-            //     CurrentDisplayValue = InputValue;
-            // else
-            //     CurrentDisplayValue = decimal.Parse(InputValue).ToString("N0", CultureInfo.CurrentCulture);
-            //CurrentDisplayValue = InputValue == "" ? ResultValue.ToString() : InputValue;
+            CurrentDisplayValue = UpdateCurrentDisplay(InputValue);
         }
     }
 
-    private void Calculate()
+    private void Calculate(string? secondOperatorValue = null)
     {
         if (string.IsNullOrWhiteSpace(InputValue) || string.IsNullOrWhiteSpace(OperatorValue))
             return;
@@ -217,8 +218,17 @@
                 return;
         }
 
-        PreviusDisplayValue = $"{PreviusDisplayValue} {CurrentDisplayValue} = {ResultValue}";
-        CurrentDisplayValue = ResultValue.ToString(CultureInfo.InvariantCulture);
+        if (!string.IsNullOrWhiteSpace(secondOperatorValue))
+        {
+            PreviusValue = UpdateCurrentDisplay(ResultValue.ToString());
+            PreviusDisplayValue = $"{PreviusValue} {secondOperatorValue}";
+            CurrentDisplayValue = "";
+        }
+        else
+        {
+            CurrentDisplayValue = UpdateCurrentDisplay(ResultValue.ToString());
+            PreviusDisplayValue = $"{PreviusValue} {OperatorValue} {UpdateCurrentDisplay(secondOperand.ToString())} = {UpdateCurrentDisplay(ResultValue.ToString())}";
+        }
 
         InputValue = "";
         OperatorValue = "";
@@ -231,6 +241,7 @@
         ResultValue = 0;
         CurrentDisplayValue = "";
         PreviusDisplayValue = "";
+        PreviusValue = "";
     }
 
     private void BackSpace()
@@ -249,5 +260,41 @@
             InputValue = "";
             CurrentDisplayValue = InputValue;
         }
+    }
+
+    private string UpdateCurrentDisplay(string currentValue)
+    {
+        string output = "";
+        string? decimalPoint = "";
+        string? integerValue = null;
+        string? decimalValue = null;
+        int intValue = 0;
+
+        if (currentValue == ".")
+            return output = currentValue;
+
+        if (currentValue.Contains("."))
+        {
+            if (currentValue.Length > 1)
+            {
+                integerValue = currentValue.Split(".")[0];
+                decimalValue = currentValue.Split(".")[1];
+            }
+
+            decimalPoint = ".";
+        }
+        else
+            integerValue = currentValue;
+
+        if (!string.IsNullOrWhiteSpace(integerValue))
+            intValue = int.Parse(integerValue);
+
+        if (string.IsNullOrWhiteSpace(decimalValue))
+            output = $"{intValue.ToString("N0")}{decimalPoint}";
+
+        else
+            output = $"{(integerValue == "" ? "" : intValue.ToString("N0"))}{decimalPoint}{decimalValue}";
+
+        return output;
     }
 }
