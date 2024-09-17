@@ -5,7 +5,7 @@
     body {
         display: flex;
         justify-content: center;
-        background-image: linear-gradient(#21618c, #117a65);
+        background-image: radial-gradient(#21618c, #117a65);
     }
 
     .display-value {
@@ -20,11 +20,12 @@
 
     .calculator-container {
         width: 100%;
-        margin: 20px auto;
+        margin: 30px auto;
         border: 2px solid lightgray;
         border-radius: 10px;
         padding: 10px;
         background-color: whitesmoke;
+        box-shadow: 10px 10px;
     }
 
     .calculator-display {
@@ -94,7 +95,7 @@
 </style>
 
 <div class="calculator-container">
-    <h3>Calculator</h3>
+    <h5>Calculator</h5>
 
     <div class="calculator-display-sm">
         <input type="text" class="display-value-sm" readonly value="@PreviusDisplayValue" />
