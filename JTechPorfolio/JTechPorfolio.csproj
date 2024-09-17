@@ -11,7 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\code.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="wwwroot\images\blazeposLogo-lg.png" />
+    <EmbeddedResource Include="wwwroot\images\code.jpg" />
     <EmbeddedResource Include="wwwroot\images\login.jpg" />
   </ItemGroup>
 

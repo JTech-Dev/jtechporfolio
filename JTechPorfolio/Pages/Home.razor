@@ -10,11 +10,32 @@
     ol {
         list-style-type: none;
     }
+
+    .blur-bg-img-container {
+        max-width: 100%;
+        height: 400px;
+        background-image: url("/images/code.jpg"); 
+        filter: blur(3px);
+        -webkit-filter: blur(3px);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+
 </style>
 
 <PageTitle>Joel's Porfolio | Home</PageTitle>
 
+<div class="blur-bg-img-container">
+    <div>
+        <h2 class="text-white">Joel Santos Reyes</h2>
+        <h5 class="text-white">Portfolio</h5>
+    </div>
+</div>
+
 <div class="container">
+
     <div class="card">
         <div class="card-header">
             <img class="card-img-top fa fa-user" />

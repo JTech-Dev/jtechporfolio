@@ -7,18 +7,23 @@
         <MudItem>
             <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
             Immediate="false" Label="Input Amount" Format="N2" @bind-Value="newTax.InputAmount" Class="my-lg-5"/>
+            
+        </MudItem>
 
+        <MudItem>
             <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
                              Immediate="false" Label="Tax #1" Format="N2" @bind-Value="newTax.TaxOneAmount" Class="my-md-5" />
 
             <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #2" Format="N2" @bind-Value="newTax.TaxTwoAmount" Class="my-md-5"/>
+                             Immediate="false" Label="Tax #2" Format="N2" @bind-Value="newTax.TaxTwoAmount" Class="my-md-5" />
+        </MudItem>
+
+        <MudItem>
+            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                             Immediate="false" Label="Tax #3" Format="N2" @bind-Value="newTax.TaxThreeAmount" Class="my-md-5" />
 
             <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #3" Format="N2" @bind-Value="newTax.TaxThreeAmount" Class="my-md-5"/>
-
-            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #4" Format="N2" @bind-Value="newTax.TaxFourAmount" Class="my-md-5" />
+                             Immediate="false" Label="Tax #4" Format="N2" @bind-Value="newTax.TaxFourAmount" Class="my-md-5 text-align-right" />
         </MudItem>
 
         @* <MudItem>
