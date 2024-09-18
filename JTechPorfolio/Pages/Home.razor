@@ -11,58 +11,83 @@
         list-style-type: none;
     }
 
-    .blur-bg-img-container {
-        max-width: 100%;
+    .header-container {
+        width: 100%;
         height: 400px;
-        background-image: url("/images/code.jpg"); 
-        filter: blur(3px);
-        -webkit-filter: blur(3px);
-        background-position: center;
-        background-repeat: no-repeat;
+        background-image: url("/images/code.jpg");
+        background-blend-mode: multiply;
         background-size: cover;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding-bottom: 30px;
+        padding-top: 100px;
     }
-    
+
+    .title-name {
+        text-align: center;
+        margin: 0;
+        font-size: 3em;
+        font-weight: normal;
+        color: white;
+    }
+
+    .title-subtitle {
+        text-align: center;
+        margin: 0;
+        font-size: 1.5em;
+        font-weight: normal;
+        color: gray;
+    }
+
+    .title-name-large {
+        font-size: 6em;
+    }
+
+    .title-container {
+        margin-top: auto;
+    }
 
 </style>
 
 <PageTitle>Joel's Porfolio | Home</PageTitle>
 
-<div class="blur-bg-img-container">
-    <div>
-        <h2 class="text-white">Joel Santos Reyes</h2>
-        <h5 class="text-white">Portfolio</h5>
+<header class="header-container">
+    <div class="title-container h-100">
+        <h2 class="title-name title-name-large">Joel Santos Reyes</h2>
+        <h5 class="title-name">Portfolio</h5>
+        <p class="title-subtitle">I love coding and being creative</p>
     </div>
-</div>
+</header>
 
-<div class="container">
+<div class="my-5 h-100 d-flex align-items-center justify-content-center">
 
-    <div class="card">
+    <div class="card h-50" style="width: 18rem;">
         <div class="card-header">
-            <img class="card-img-top fa fa-user" />
+            <img class="card-img-top rounded-3" src="/images/joel glaciares 2024.jpg" alt="No Image"/>
 
         </div>
+
         <div class="card-body">
-            <p>
-                Hola mi nombre es Joel Santos Reyes mi lenguaje primario es español pero tambien hablo inglés,
-                soy una persona apasionada con la programación, empezé utilizando Python 3 aprendi los fundamentos
-                hasta llegue a crear video juegos luego, 2 años despues aprendi a usar C# y el lenguage que utilizo
-                actualmente y tengo +6 años de experiencia.  Utilizo Xamarin, .NET MAUI y Blazor para crear apps y web apps
-                y e hecho trabajos de producción con esas tecnologias.  Tambien trabajo con HTML5, CSS y JS, lo cual son los
-                lenguajes que utilizo para mi pagina web.  Estoy siempre listo y dispuesto a aprender nuevas cosas todo el tiempo.
+
+            <h5 class="card-title">
+                Joel Santos Reyes
+            </h5>
+
+            <p class="card-text">
+                Soy una persona apasionada con la programación y estoy siempre listo y dispuesto a aprender cosas nuevas todo el tiempo.
             </p>
         </div>
-    </div>
 
-    <div class="container container-lg m-3">
-        <h3>Skills</h3>
-        <ol>
-            <li><p class="fa fa-code text-white"></p> C#</li>
-            <li><p class="fa fa-html5 text-white"></p> HTML</li>
-            <li><p class="fa-brands fa-css3-alt text-white"></p> CSS</li>
-            <li><p class="fa-brands fa-js text-white"></p> Java Script</li>
-            <li>@@ Blazor</li>
-            <li><p class="fa-solid fa-network-wired text-white"></p> Networking</li>
-        </ol>
-    </div>
+        <div class="card-footer">
+            <h5 class="text-dark">Skills</h5>
+            <ul list-group list-group-flush>
+                <li class="list-group-item"><p class="fa fa-code"></p> C#</li>
+                <li class="list-group-item"><p class="fa fa-html5 "></p> HTML</li>
+                <li class="list-group-item"><p class="fa-brands fa-css3-alt"></p> CSS</li>
+                <li class="list-group-item"><p class="fa-brands fa-js"></p> Java Script</li>
+                <li class="list-group-item"><p>@@ Blazor</p></li>
+                <li class="list-group-item"><p class="fa-solid fa-network-wired"></p> Networking</li>
+            </ul>
+        </div>
 
+    </div>
 </div>
