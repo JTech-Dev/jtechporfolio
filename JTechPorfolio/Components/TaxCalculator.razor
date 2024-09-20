@@ -1,108 +1,149 @@
 ﻿@page "/tax"
 
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        background-image: radial-gradient(#ccc, #87c1fa);
+    }
+
+    .num-text-align input {
+        text-align: right;
+    }
+
+    .main-contanier {
+        box-shadow: 10px 10px;
+        width: 100%;
+        padding: 2px;
+        background-color: #212121;
+        border: 1px solid gray;
+    }
+
+    .input-container {
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .center-content {
+        width: 100%;
+        margin: 0 auto;
+    }
+</style>
+
 <PageTitle>JTech Porfolio | Tax Calculator</PageTitle>
 
-<EditForm class="row my-2 mx-2" Model="@newTax" OnValidSubmit="CalculateTax">
-    <MudGrid>
-        <MudItem>
-            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-            Immediate="false" Label="Input Amount" Format="N2" @bind-Value="newTax.InputAmount" Class="my-lg-5"/>
-            
-        </MudItem>
+<div class="main-contanier mx-2 my-3">
+    <div class="input-container p-3 bg-white">
+        <EditForm class="center-content p-2" Model="@newTax" OnValidSubmit="CalculateTax">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                                     Immediate="false" Label="Input Amount" Format="N2" @bind-Value="newTax.InputAmount" Class="my-lg-5 num-text-align" />
 
-        <MudItem>
-            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #1" Format="N2" @bind-Value="newTax.TaxOneAmount" Class="my-md-5" />
+                </MudItem>
 
-            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #2" Format="N2" @bind-Value="newTax.TaxTwoAmount" Class="my-md-5" />
-        </MudItem>
+                <MudDivider />
 
-        <MudItem>
-            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #3" Format="N2" @bind-Value="newTax.TaxThreeAmount" Class="my-md-5" />
+                <MudItem xs="6" Class="d-flex-inline">
+                    <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                                     Immediate="false" Label="Tax #1" Format="N2" @bind-Value="newTax.TaxOneAmount" Class="my-md-5 num-text-align" />
 
-            <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
-                             Immediate="false" Label="Tax #4" Format="N2" @bind-Value="newTax.TaxFourAmount" Class="my-md-5 text-align-right" />
-        </MudItem>
+                    <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                                     Immediate="false" Label="Tax #2" Format="N2" @bind-Value="newTax.TaxTwoAmount" Class="my-md-5 num-text-align" />
+                </MudItem>
 
-        @* <MudItem>
-            <MudButton Variant="Variant.Outlined" Color="Color.Primary">Calculate</MudButton>
-        </MudItem> *@
-    </MudGrid>
-    @* <InputNumber class="form-control mx-2" style="width: 50%;" @bind-Value="newTax.InputAmount" placeholder="Input Amount" />
-    
-    <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxOneAmount" placeholder="Tax #1" />
-    <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxTwoAmount" placeholder="Tax #2" />
-    <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxThreeAmount" placeholder="Tax #3" />
-    <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxFourAmount" placeholder="Tax #4" />
+                <MudItem xs="6">
+                    <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                                     Immediate="false" Label="Tax #3" Format="N2" @bind-Value="newTax.TaxThreeAmount" Class="my-md-5 num-text-align" />
 
-    <div>
-        <button class="col-1 my-2 btn btn-outline-primary w-25" type="submit">Calculate</button>
-    </div> *@
-</EditForm>
+                    <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                                     Immediate="false" Label="Tax #4" Format="N2" @bind-Value="newTax.TaxFourAmount" Class="my-md-5 num-text-align" />
+                </MudItem>
 
-<MudGrid class="m-2">
-    <MudItem>
-        <MudButton Variant="Variant.Outlined" OnClick="CalculateTax" Color="Color.Primary">Calculate</MudButton>
-    </MudItem>
-    <MudItem>
-        <MudButton Variant="Variant.Outlined" OnClick="ClearValues" Color="Color.Error">Clear</MudButton>
-    </MudItem>
-</MudGrid>
+                @* <MudItem>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary">Calculate</MudButton>
+                </MudItem> *@
+            </MudGrid>
+            @* <InputNumber class="form-control mx-2" style="width: 50%;" @bind-Value="newTax.InputAmount" placeholder="Input Amount" />
 
-<MudDivider />
+            <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxOneAmount" placeholder="Tax #1" />
+            <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxTwoAmount" placeholder="Tax #2" />
+            <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxThreeAmount" placeholder="Tax #3" />
+            <InputNumber class="form-control col m-2" @bind-Value="newTax.TaxFourAmount" placeholder="Tax #4" />
 
-@if (totalAmount > 0)
-{
-    <MudGrid Class="m-1">
-        <MudItem Class="my-2" xs="3">
-           @*  <MudText>Tax #1 Amount: $@taxOneAmount</MudText> *@
-            <MudPaper Class="border-solid p-3">
-                Tax #1 Amount: $@taxOneAmount
-            </MudPaper>
-        </MudItem>
+            <div>
+            <button class="col-1 my-2 btn btn-outline-primary w-25" type="submit">Calculate</button>
+            </div> *@
+        </EditForm>
 
-        <MudItem Class="my-2" xs="3">
-            @* <MudText>Tax #2 Amount: $@taxTwoAmount</MudText> *@
-            <MudPaper Class="border-solid p-3">
-                Tax #2 Amount: $@taxTwoAmount
-            </MudPaper>
-        </MudItem>
+        <MudGrid class="center-content">
+            <MudItem xs="6">
+                <MudButton Class="w-50" Variant="Variant.Outlined" OnClick="CalculateTax" Color="Color.Primary">Calculate</MudButton>
+            </MudItem>
+            <MudItem xs="6">
+                <MudButton Class="w-50" Variant="Variant.Outlined" OnClick="ClearValues" Color="Color.Error">Clear</MudButton>
+            </MudItem>
+        </MudGrid>
+    </div>
 
-        <MudFlexBreak />
+    <hr />
 
-        <MudItem Class="my-2" xs="3">
-            <MudPaper Class="border-solid p-3">
-                Tax #3 Amount: $@taxThreeAmount
-            </MudPaper>
-        </MudItem>
+    @if (totalAmount > 0)
+    {
+        <div class="mx-auto p-3">
+            <MudGrid>
+                <MudItem xs="6">
+                    @*  <MudText>Tax #1 Amount: $@taxOneAmount</MudText> *@
+                    <MudPaper Class="text-end border-solid p-3">
+                        Tax #1 Amount: $@taxOneAmount
+                    </MudPaper>
+                </MudItem>
 
-        <MudItem Class="my-2" xs="3">
-            @* <MudText>Tax #4 Amount: $@taxFourAmount</MudText> *@
-            <MudPaper Class="border-solid p-3">
-                Tax #4 Amount: $@taxFourAmount
-            </MudPaper>
-        </MudItem>
+                <MudItem  xs="6">
+                    @* <MudText>Tax #2 Amount: $@taxTwoAmount</MudText> *@
+                    <MudPaper Class="text-end border-solid p-3">
+                        Tax #2 Amount: $@taxTwoAmount
+                    </MudPaper>
+                </MudItem>
 
-        <MudFlexBreak />
+                <MudFlexBreak />
 
-        <MudItem Class="my-2" xs="6">
-            <MudPaper Class="border-solid p-3">
-                Total Tax Amount: $@totalTax
-            </MudPaper>
-            @* <MudText>Total Tax Amount: $@totalTax</MudText> *@
-        </MudItem>
+                <MudItem  xs="6">
+                    <MudPaper Class="text-end border-solid p-3">
+                        Tax #3 Amount: $@taxThreeAmount
+                    </MudPaper>
+                </MudItem>
 
-        <MudDivider />
+                <MudItem  xs="6">
+                    @* <MudText>Tax #4 Amount: $@taxFourAmount</MudText> *@
+                    <MudPaper Class="text-end border-solid p-3">
+                        Tax #4 Amount: $@taxFourAmount
+                    </MudPaper>
+                </MudItem>
 
-        <MudItem Class="my-2" xs="6">
-            <MudPaper Style="background-color: darkgreen" Class="border-solid p-3">
-                <MudText style="color: white;">Total: $@totalAmount</MudText>
-            </MudPaper>
-        </MudItem>
-    </MudGrid>
-}
+                <MudFlexBreak />
+
+                <MudItem Class="my-1" xs="12">
+                    <MudPaper Class="border-solid text-end p-3">
+                        Total Tax Amount: $@totalTax
+                    </MudPaper>
+                    @* <MudText>Total Tax Amount: $@totalTax</MudText> *@
+                </MudItem>
+
+                <hr/>
+
+                <MudItem xs="12">
+                    <MudPaper Style="background-color: darkgreen" Class="border-solid p-3">
+                        <MudText class="text-end" style="color: white;">Total: $@totalAmount</MudText>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </div>
+    }
+</div>
+
+
 
 @code {
     TaxCalculatorModel newTax = new();
