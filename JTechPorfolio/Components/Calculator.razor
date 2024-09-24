@@ -8,6 +8,10 @@
         background-image: radial-gradient(#21618c, #117a65);
     }
 
+    button:hover {
+        opacity: 0.50;
+    }
+
     .display-value {
         background-color: lightgray;
         font-size: 1.5rem;
@@ -90,7 +94,32 @@
         color: white;
         padding: 10px;
         font-size: 1.5rem;
+        grid-column: 1 / 3;
     }
+
+.grid-contanier {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    grid-auto-rows: minmax(80px, 80px);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.num-btn {
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: lightgray;
+}
+
+    .fun-btn {
+        font-weight: bold;
+        background-color: orange;
+        font-size: 1.5rem;
+    }
+
+    
 
 </style>
 
@@ -105,7 +134,7 @@
         <input type="text" class="display-value" readonly value="@CurrentDisplayValue" />
     </div>
 
-    <div class="button-panel">
+    @* <div class="button-panel">
         <button class="clear-button" style="background-color: red;" @onclick="Clear">C</button>
         <button style="background-color: orange;" @onclick="@(() => BackSpace())">←</button>
         <button style="background-color: orange;" @onclick="@(() => BackSpace())">←</button>
@@ -138,8 +167,34 @@
         <button @onclick="@(() => AppendValue("00"))">00</button>
         <button @onclick="@(() => AppendValue("."))">.</button>
         <button style="background-color: orange;" @onclick="@(() => Calculate())">=</button>
-    </div>
+    </div> *@
     
+    <div class="grid-contanier">
+        <button class="clear-button" style="background-color: red;" @onclick="Clear">C</button>
+        <button class="fun-btn" style="background-color: orange;" @onclick="@(() => BackSpace())">←</button>
+        <button class="fun-btn" style="background-color: orange;" @onclick="@(() => AppendValue("/"))">÷</button>
+
+        <button class="num-btn" @onclick="@(() => AppendValue("7"))">7</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("8"))">8</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("9"))">9</button>
+        <button class="fun-btn" @onclick="@(() => AppendValue("*"))">*</button>
+
+        <button class="num-btn" @onclick="@(() => AppendValue("4"))">4</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("5"))">5</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("6"))">6</button>
+        <button class="fun-btn" style="background-color: orange;" @onclick="@(() => AppendValue("-"))">-</button>
+
+        <button class="num-btn" @onclick="@(() => AppendValue("1"))">1</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("2"))">2</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("3"))">3</button>
+        <button class="fun-btn" style="background-color: orange;" @onclick="@(() => AppendValue("+"))">+</button>
+
+        <button class="num-btn" @onclick="@(() => AppendValue("0"))">0</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("00"))">00</button>
+        <button class="num-btn" @onclick="@(() => AppendValue("."))">.</button>
+        <button class="fun-btn" style="background-color: orange;" @onclick="@(() => Calculate())">=</button>
+    </div>
+
 </div>
 
 @code {
