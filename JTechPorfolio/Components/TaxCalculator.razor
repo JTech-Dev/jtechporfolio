@@ -32,7 +32,7 @@
 
 <PageTitle>JTech Porfolio | Tax Calculator</PageTitle>
 
-<div class="main-contanier mx-2 my-3 p-1">
+<div class="main-contanier mx-auto my-3 p-1">
     <div class="input-container p-3 bg-white">
         <EditForm class="center-content" Model="@newTax" OnValidSubmit="CalculateTax">
             <MudGrid>
@@ -93,44 +93,40 @@
         <div class="p-3">
             <MudGrid>
                 <MudItem xs="3">
-                    <MudPaper Elevation="1" Class="text-end border-solid p-3">
-                        Tax #1: $@taxOneAmount
-                    </MudPaper>
+                    <MudText Class="text-white">Tax #1</MudText>
+                    <MudPaper Elevation="1" Class="text-end border-solid fw-bold p-2">$@taxOneAmount</MudPaper>
                 </MudItem>
 
                 <MudItem xs="3">
-                    <MudPaper Class="text-end border-solid p-3">
-                        Tax #2: $@taxTwoAmount
-                    </MudPaper>
+                    <MudText Class="text-white">Tax #2</MudText>
+                    <MudPaper Class="text-end border-solid fw-bold p-2">$@taxTwoAmount</MudPaper>
                 </MudItem>
 
                 @* <MudFlexBreak /> *@
 
                 <MudItem xs="3">
-                    <MudPaper Class="text-end border-solid p-3">
-                        Tax #3: $@taxThreeAmount
-                    </MudPaper>
+                    <MudText Class="text-white">Tax #3</MudText>
+                    <MudPaper Class="text-end border-solid fw-bold p-2">$@taxThreeAmount</MudPaper>
                 </MudItem>
 
                 <MudItem xs="3">
-                    <MudPaper Class="text-end border-solid p-3">
-                        Tax #4: $@taxFourAmount
-                    </MudPaper>
+                    <MudText Class="text-white">Tax #4</MudText>
+                    <MudPaper Class="text-end border-solid fw-bold p-2">$@taxFourAmount</MudPaper>
                 </MudItem>
 
                 <MudFlexBreak />
 
                 <MudItem Class="my-1" xs="12">
-                    <MudPaper Class="border-solid text-end p-3">
-                        Total Tax Amount: $@totalTax
-                    </MudPaper>
+                    <MudText Class="text-white">Total Tax Amount</MudText>
+                    <MudPaper Class="text-end border-solid fw-bold p-2">$@totalTax</MudPaper>
                 </MudItem>
 
                 <hr/>
 
                 <MudItem xs="12">
+                    <MudText Class="text-white">Total</MudText>
                     <MudPaper Style="background-color: darkgreen" Class="border-solid p-3">
-                        <MudText class="text-end" style="color: white;">Total: $@totalAmount</MudText>
+                        <MudText Class="text-end border-solid fw-bold text-white">$@totalAmount</MudText>
                     </MudPaper>
                 </MudItem>
             </MudGrid>
@@ -142,16 +138,15 @@
 
 @code {
     TaxCalculatorModel newTax = new();
-    decimal totalAmount = 0;
 
+    decimal totalAmount = 0;
     decimal taxOneAmount = 0m;
     decimal taxTwoAmount = 0m;
     decimal taxThreeAmount = 0m;
     decimal taxFourAmount = 0m;
-
     decimal totalTax = 0m;
 
-    private void CalculateTax()
+    private async void CalculateTax()
     {
         if (newTax.InputAmount > 0)
         {
@@ -198,7 +193,6 @@
                 if (isValid)
                     taxFourAmount = taxValue;
             }
-
             totalTax = taxOneAmount + taxTwoAmount + taxThreeAmount + taxFourAmount;
             totalAmount = newTax.InputAmount + totalTax;
         }
