@@ -1,65 +1,80 @@
 ﻿@page "/task"
 
-<PageTitle>JTech Porfolio | Task List</PageTitle>
-
-@* <h3>TaskList</h3> *@
-
-<EditForm class="my-2 mx-2 w-50" Model="@newTask" OnValidSubmit="AddTask">
-    <MudGrid>
-        <MudItem>
-            <MudTextField Variant="Variant.Outlined" T="string" Immediate="false" Label="Title" Class="my-md-5" @bind-Value="taskTitle" />
-            <MudTextField Variant="Variant.Outlined" T="string" Immediate="false" Label="Input Task" Class="my-md-5" @bind-Value="newTask.Task" />
-
-            <button class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
-            <button class="btn btn-outline-danger m-2" style="width: fit-content" type="submit" onclick="@ClearTask">Clear Task</button>
-        </MudItem>
-    </MudGrid>
-</EditForm>
-
-@* <div class="m-2">
-    <button onclick="@AddTask" class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
-    <button onclick="@ClearTask" class="btn btn-outline-danger m-2" style="width: fit-content" type="submit">Clear Task</button>
-</div> *@
-
-<div class="m-2">
-
-    <MudText>@taskTitle</MudText>
-
-    @if (taskList.Count > 0)
-    {
-        <MudProgressLinear Color="Color.Success" Rounded="true" Striped="true" Size="Size.Large" Value="@percentProgress" Class="my-2 w-50">
-            <MudText Typo="Typo.subtitle2">
-                <b>@percentProgress%</b>
-            </MudText>
-        </MudProgressLinear>
-
-        @* <div class="progres w-50">
-            <div class="progress-bar" role="progressbar" style="width: @percentProgress%"
-                 aria-valuemin="0" aria-valuemax="100">
-                @percentProgress%
-            </div>
-        </div> *@
+<style>
+    body {
+        background-image: linear-gradient(to right, #6495ED, #CCCCFF);
     }
 
-    <ul class="list-group">
-        @foreach (var task in taskList)
-        {
-            @if (task.IsComplete)
+    .main-container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .content-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 5px;
+        min-width: 50%;
+        max-width: 90%;
+        margin: 10px auto;
+    }
+</style>
+
+<PageTitle>JTech Porfolio | Task List</PageTitle>
+
+<div class="main-container">
+    <div class="content-container bg-white">
+       <div class="m-2 p-2">
+            <EditForm Model="@newTask" OnValidSubmit="AddTask">
+                <MudGrid>
+                    <MudItem>
+                        <MudTextField Variant="Variant.Outlined" T="string" Immediate="false" Label="Title" Class="my-md-5" @bind-Value="taskTitle" />
+                        <MudTextField Variant="Variant.Outlined" T="string" Immediate="false" Label="Input Task" Class="my-md-5" @bind-Value="newTask.Task" />
+
+                        <button class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
+                        <button class="btn btn-outline-danger m-2" style="width: fit-content" type="submit" onclick="@ClearTask">Clear Task</button>
+                    </MudItem>
+                </MudGrid>
+            </EditForm>
+       </div>
+
+        <hr />
+
+        <div class="my-2 p-2">
+
+            <MudText>@taskTitle</MudText>
+
+            @if (taskList.Count > 0)
             {
-                <li class="list-group-item list-group-item-secondary my-1 w-50"
-                    @onclick="(() => task.IsComplete = !task.IsComplete)">
-                    <del>@task.Task</del>
-                </li>
+                <MudProgressLinear Color="Color.Success" Rounded="true" Striped="true" Size="Size.Large" Value="@percentProgress" Class="my-2">
+                    <MudText Typo="Typo.subtitle2">
+                        <b>@percentProgress%</b>
+                    </MudText>
+                </MudProgressLinear>
             }
-            else
-            {
-                <li class="list-group-item list-group-item-success my-1 w-50"
-                    @onclick="(() => task.IsComplete = !task.IsComplete)">
-                    @task.Task
-                </li>
-            }
-        }
-    </ul>
+
+            <ul class="list-group">
+                @foreach (var task in taskList)
+                {
+                    @if (task.IsComplete)
+                    {
+                        <li class="list-group-item list-group-item-secondary my-1"
+                            @onclick="(() => task.IsComplete = !task.IsComplete)">
+                            <del>@task.Task</del>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="list-group-item list-group-item-success my-1"
+                            @onclick="(() => task.IsComplete = !task.IsComplete)">
+                            @task.Task
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
 </div>
 
 @code {
