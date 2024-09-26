@@ -1,13 +1,19 @@
 ﻿@page "/project"
 
 <style>
+    body {
+        background-image: radial-gradient(#080808, #212121);
+    }
+
     .default-card {
         background-color: whitesmoke;
+        border: 1px solid #898989;
+        box-shadow: 10px 10px;
+        margin-top: 40px;
     }
 
     .default-card:hover {
         cursor: pointer;
-        opacity: 0.60;
     }
 </style>
 
@@ -15,7 +21,7 @@
 
 <div class="container justify-content-center">
 
-    <div class="card default-card mx-2 my-4">
+    <div class="card default-card">
         <div class="card-header" style="background-color: transparent;">
             <img class="card-img-top" src="/images/login.jpg" />
         </div>
@@ -30,7 +36,7 @@
         </div>
     </div>
 
-    <div class="card default-card mx-2 my-4">
+    <div class="card default-card">
         <div class="card-header" style="background-color: transparent;">
             <img class="card-img-top" src="/images/sm01.png" />
         </div>

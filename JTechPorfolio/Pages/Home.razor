@@ -2,7 +2,10 @@
 
 <style>
     body {
-        background-color: #252525;
+        background-image: url("/images/code.jpg");
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.9);
     }
     h1, h3, li {
         color: whitesmoke;
@@ -13,13 +16,13 @@
 
     .header-container {
         width: 100%;
-        height: 500px;
-        background-image: url("/images/code.jpg");
+        height: 400px;
+        /* background-image: url("/images/code.jpg");
         background-blend-mode: multiply;
         background-size: cover;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 0.9); */
         padding-bottom: 30px;
-        padding-top: 250px;
+        padding-top: 100px;
     }
 
     .title-name {
@@ -58,11 +61,25 @@
     </div>
 </header>
 
-<div class="my-5 h-100 d-flex align-items-center justify-content-center">
+<div class="card-body">
+    <h5 class="card-text text-light">
+        Joel Santos Reyes
+    </h5>
+</div>
 
-    <div class="card h-50" style="width: 18rem;">
+<div class="card-body">
+    <p class="card-subtitle text-light">
+        Soy una persona apasionada con la programación y estoy siempre listo y dispuesto a aprender cosas nuevas todo el tiempo.
+    </p>
+</div>
+
+<div class="card-header">
+
+    <img class="card-img w-50 h-50 rounded-3" src="/images/joel glaciares 2024.jpg" alt="No Image" />
+
+   @*  <div class="card h-50" style="width: 18rem;">
         <div class="card-header">
-            <img class="card-img-top rounded-3" src="/images/joel glaciares 2024.jpg" alt="No Image"/>
+            <img class="card-img rounded-3" src="/images/joel glaciares 2024.jpg" alt="No Image"/>
 
         </div>
 
@@ -77,17 +94,29 @@
             </p>
         </div>
 
-        <div class="card-footer">
-            <h5 class="text-dark">Skills</h5>
-            <ul list-group list-group-flush>
-                <li class="list-group-item"><p class="fa fa-code"></p> C#</li>
-                <li class="list-group-item"><p class="fa fa-html5 "></p> HTML</li>
-                <li class="list-group-item"><p class="fa-brands fa-css3-alt"></p> CSS</li>
-                <li class="list-group-item"><p class="fa-brands fa-js"></p> Java Script</li>
-                <li class="list-group-item"><p>@@ Blazor</p></li>
-                <li class="list-group-item"><p class="fa-solid fa-network-wired"></p> Networking</li>
-            </ul>
-        </div>
+        
 
-    </div>
+    </div> *@
+</div>
+
+<div class="card-footer">
+    <h5 class="text-light">Skills</h5>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><p class="fa fa-code"></p> C#</li>
+        <li class="list-group-item"><p class="fa fa-html5 "></p> HTML</li>
+        <li class="list-group-item"><p class="fa-brands fa-css3-alt"></p> CSS</li>
+        <li class="list-group-item"><p class="fa-brands fa-js"></p> Java Script</li>
+        <li class="list-group-item"><p>@@ Blazor</p></li>
+        <li class="list-group-item"><p class="fa-solid fa-network-wired"></p> Networking</li>
+    </ul>
+</div>
+
+<div class="card-footer">
+    <h5 class="text-light">Contanct</h5>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><p class="fa fa-user"></p><span class="mx-2">Joel Santos Reyes</span></li>
+        <li class="list-group-item"><p class="fa fa-envelope"></p><span class="mx-2">joeltech12@gmail.com</span></li>
+        <li class="list-group-item"><p class="fa fa-phone"></p><span class="mx-2">787.392.4401</span></li>
+        <li class="list-group-item"><p class="fa-brands fa-github"></p> <a href="https://github.com/JTech-Dev" target="_blank"><span class="mx-2">Github</span></a></li>
+    </ul>
 </div>
