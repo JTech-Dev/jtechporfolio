@@ -2,7 +2,7 @@
 
 <style>
     body {
-        background-image: url("/images/code.jpg");
+        background-image: url("/images/js01.jpg");
         background-blend-mode: multiply;
         background-size: cover;
         background-color: rgba(0, 0, 0, 0.9);
@@ -10,17 +10,24 @@
     h1, h3, li {
         color: whitesmoke;
     }
+
     ol {
         list-style-type: none;
+    }
+
+    .text-anim{
+        color: gray;
+        transition: all 0.3s ease;
+    }
+
+    .text-anim:hover {
+        color: lightblue;
+        transition: all 0.3s ease;
     }
 
     .header-container {
         width: 100%;
         height: 400px;
-        /* background-image: url("/images/code.jpg");
-        background-blend-mode: multiply;
-        background-size: cover;
-        background-color: rgba(0, 0, 0, 0.9); */
         padding-bottom: 30px;
         padding-top: 100px;
     }
@@ -41,6 +48,12 @@
         color: gray;
     }
 
+    .body-text {
+        font-size: 1.2em;
+        font-weight: normal;
+        color: gray;
+    }
+
     .title-name-large {
         font-size: 6em;
     }
@@ -49,74 +62,76 @@
         margin: auto;
     }
 
+    .footer-container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
 </style>
 
-<PageTitle>Joel's Porfolio | Home</PageTitle>
+<PageTitle>Joel's Portfolio | Home</PageTitle>
 
 <header class="header-container">
     <div class="title-container">
         <h2 class="title-name title-name-large">Joel Santos Reyes</h2>
-        <h5 class="title-name">Portfolio</h5>
-        <p class="title-subtitle">I love coding and being creative</p>
+        <p class="title-subtitle">
+            I love coding and being creative.
+        </p>
     </div>
 </header>
 
-<div class="card-body">
-    <h5 class="card-text text-light">
-        Joel Santos Reyes
-    </h5>
-</div>
-
-<div class="card-body">
-    <p class="card-subtitle text-light">
-        Soy una persona apasionada con la programación y estoy siempre listo y dispuesto a aprender cosas nuevas todo el tiempo.
-    </p>
-</div>
-
-<div class="card-header">
-
-    <img class="card-img w-50 h-50 rounded-3" src="/images/joel glaciares 2024.jpg" alt="No Image" />
-
-   @*  <div class="card h-50" style="width: 18rem;">
-        <div class="card-header">
-            <img class="card-img rounded-3" src="/images/joel glaciares 2024.jpg" alt="No Image"/>
-
-        </div>
-
-        <div class="card-body">
-
-            <h5 class="card-title">
-                Joel Santos Reyes
-            </h5>
-
-            <p class="card-text">
-                Soy una persona apasionada con la programación y estoy siempre listo y dispuesto a aprender cosas nuevas todo el tiempo.
+<div class="footer-container">
+    <div class="card-footer w-25">
+        <div >
+            <h5 class="text-light">Specialty</h5>
+            <p class="body-text">
+                My strenghts are building mobile apps and desktop apps using .NET, C#,  I've build web apps with Blazor,
+                HTML5 CSS3 Javascript, React JS and React Native.  I work with databases such as SQLite, MySQL and MS SQL Server.
             </p>
         </div>
 
-        
+        <div>
+            <h5 class="text-light">Frameworks</h5>
+            <p class="body-text">This website was build using Blazor .NET 8</p>
+        </div>
+    </div>
 
-    </div> *@
-</div>
+    <div class="card-footer">
+        <h5 class="text-light">Skills</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-transparent body-text">C#</li>
+            <li class="list-group-item bg-transparent body-text">HTML 5</li>
+            <li class="list-group-item bg-transparent body-text">CSS 3</li>
+            <li class="list-group-item bg-transparent body-text">Javascript</li>
+            <li class="list-group-item bg-transparent body-text">Blazor</li>
+            <li class="list-group-item bg-transparent body-text">Networking</li>
+        </ul>
+    </div>
 
-<div class="card-footer">
-    <h5 class="text-light">Skills</h5>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"><p class="fa fa-code"></p> C#</li>
-        <li class="list-group-item"><p class="fa fa-html5 "></p> HTML</li>
-        <li class="list-group-item"><p class="fa-brands fa-css3-alt"></p> CSS</li>
-        <li class="list-group-item"><p class="fa-brands fa-js"></p> Java Script</li>
-        <li class="list-group-item"><p>@@ Blazor</p></li>
-        <li class="list-group-item"><p class="fa-solid fa-network-wired"></p> Networking</li>
-    </ul>
-</div>
+    <div class="card-footer">
+        <h5 class="text-light">Contact</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-transparent body-text">
+                <p class="fa fa-user body-text"></p>
+                <span class="mx-2">Joel Santos Reyes</span>
+            
+            </li>
+            <li class="list-group-item bg-transparent">
+                <p class="fa fa-envelope body-text"></p>
+                <a href="mailto:jsr.tech.dev@gmail.com" class="mx-2 body-text text-anim">joeltech12@gmail.com</a>
+            </li>
+            
+            <li class="list-group-item bg-transparent body-text">
+                <p class="fa fa-phone body-text"></p>
+                <span class="mx-2">787.392.4401</span>
+            </li>
 
-<div class="card-footer">
-    <h5 class="text-light">Contanct</h5>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"><p class="fa fa-user"></p><span class="mx-2">Joel Santos Reyes</span></li>
-        <li class="list-group-item"><p class="fa fa-envelope"></p><span class="mx-2">joeltech12@gmail.com</span></li>
-        <li class="list-group-item"><p class="fa fa-phone"></p><span class="mx-2">787.392.4401</span></li>
-        <li class="list-group-item"><p class="fa-brands fa-github"></p> <a href="https://github.com/JTech-Dev" target="_blank"><span class="mx-2">Github</span></a></li>
-    </ul>
+            <li class="list-group-item bg-transparent">
+                <p class="fa-brands fa-github body-text"></p>
+                <a href="https://github.com/JTech-Dev" target="_blank">
+                    <span class="mx-2 body-text text-anim">Github</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
