@@ -5,6 +5,10 @@
         background-image: radial-gradient(#080808, #212121);
     }
 
+    .body-text {
+        color: gray;
+    }
+
     .default-card {
         background-color: whitesmoke;
         border: 1px solid #898989;
@@ -15,13 +19,40 @@
     .default-card:hover {
         cursor: pointer;
     }
+
+    .proj-img {
+        width: 300px;
+        height: 200px;
+    }
+
+    
 </style>
 
 <PageTitle>Joel's Portfolio | Projects</PageTitle>
 
-<div class="container justify-content-center">
+<div class="container">
 
-    <div class="card default-card">
+    <div class="d-flex justify-content-center">
+        <h2 class="text-light text-center">BlazePOS</h2>
+    </div>
+
+    <div class="d-flex flex-row justify-content-center align-content-center m-2">
+        @* <div class="img-container">
+            
+        </div> *@
+        <img class="proj-img" src="/images/login.jpg" />
+
+        <div class="d-flex flex-column justify-content-center w-50 p-4">
+            <h3 class="text-white">BlazePOS</h3>
+
+            <p class="body-text">
+                This is BlazePOS my most complete project is a fully functional Point of Sale System
+                suitable from small to medium sized business.
+            </p>
+        </div>
+    </div>
+
+    @* <div class="card default-card">
         <div class="card-header" style="background-color: transparent;">
             <img class="card-img-top" src="/images/login.jpg" />
         </div>
@@ -34,6 +65,10 @@
                 suitable from small to medium sized business.
             </p>
         </div>
+    </div> *@
+
+    <div>
+        <h2 class="text-light text-center">Service Manager</h2>
     </div>
 
     <div class="card default-card">
