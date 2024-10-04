@@ -1,48 +1,8 @@
-﻿@* <div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">JTechPorfolio</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="project">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="playground">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div> *@
-
-<MudNavMenu>
+﻿<MudNavMenu>
     <MudNavLink Icon="@Icons.Material.Filled.Home" Href="/" Match="NavLinkMatch.All">Home</MudNavLink>
     <MudNavLink Icon="@Icons.Material.Filled.DesktopWindows" Href="/project" Match="NavLinkMatch.All">Projects</MudNavLink>
-    <MudNavLink Icon="@Icons.Material.Filled.Gamepad" Href="/" Match="NavLinkMatch.All">Playground</MudNavLink>
-    <MudNavLink Icon="@Icons.Material.Filled.AttachMoney" Href="/tax" Match="NavLinkMatch.All">Tax Calculator</MudNavLink>
+    <MudNavLink Icon="@Icons.Material.Filled.Gamepad" Href="/playground" Match="NavLinkMatch.All">Playground</MudNavLink>
+    @* <MudNavLink Icon="@Icons.Material.Filled.AttachMoney" Href="/tax" Match="NavLinkMatch.All">Tax Calculator</MudNavLink>
     <MudNavLink Icon="@Icons.Material.Filled.Task" Href="/task" Match="NavLinkMatch.All">Task List</MudNavLink>
-    <MudNavLink Icon="@Icons.Material.Filled.Calculate" Href="/calculator" Match="NavLinkMatch.All">Calculator</MudNavLink>
+    <MudNavLink Icon="@Icons.Material.Filled.Calculate" Href="/calculator" Match="NavLinkMatch.All">Calculator</MudNavLink> *@
 </MudNavMenu>
-@* 
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-} *@

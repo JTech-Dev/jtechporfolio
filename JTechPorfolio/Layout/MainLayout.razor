@@ -7,7 +7,7 @@
 
 <MudLayout>
     <MudAppBar Class="bg-black" Elevation="1">
-        Joel Santos Porfolio
+        @* <img src="/jts-icon-512.png" style="width: 16px; height: 16px;"/> *@ Joel Santos Porfolio
         <MudSpacer />
         <MudIconButton Style="" Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
     </MudAppBar>
@@ -23,23 +23,6 @@
         @Body
     </MudMainContent>
 </MudLayout>
-
-@* <div class="page">
-     <div class="sidebar">
-        <NavMenu />
-    </div> 
-
-    <main>
-        <div class="top-row px-4 bg-dark">
-            <a class="text-white" href="#" target="_self">Home</a>
-            <a class="text-white" href="project" target="_self">Projects</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div> *@
 
 @code {
     bool isDrawerOpen = false;
