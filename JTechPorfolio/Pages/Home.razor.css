@@ -1,0 +1,75 @@
+﻿h1, h3, li {
+    color: whitesmoke;
+}
+
+ol {
+    list-style-type: none;
+}
+
+.text-anim {
+    color: gray;
+    transition: all 0.3s ease;
+}
+
+    .text-anim:hover {
+        color: lightblue;
+        transition: all 0.3s ease;
+    }
+
+.header-container {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-name {
+    text-align: center;
+    margin: 0;
+    font-size: 3em;
+    font-weight: normal;
+    color: white;
+}
+
+.title-subtitle {
+    text-align: center;
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: normal;
+    color: gray;
+}
+
+.body-text {
+    font-size: 1.2em;
+    font-weight: normal;
+    color: gray;
+}
+
+.title-name-large {
+    font-size: 6em;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60vh;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    vertical-align: bottom;
+    width: 100%;
+    margin-top: 10px;
+}

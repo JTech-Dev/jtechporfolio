@@ -7,66 +7,6 @@
         background-size: cover;
         background-color: rgba(0, 0, 0, 0.9);
     }
-    h1, h3, li {
-        color: whitesmoke;
-    }
-
-    ol {
-        list-style-type: none;
-    }
-
-    .text-anim{
-        color: gray;
-        transition: all 0.3s ease;
-    }
-
-    .text-anim:hover {
-        color: lightblue;
-        transition: all 0.3s ease;
-    }
-
-    .header-container {
-        width: 100%;
-        height: 400px;
-        padding-bottom: 30px;
-        padding-top: 100px;
-    }
-
-    .title-name {
-        text-align: center;
-        margin: 0;
-        font-size: 3em;
-        font-weight: normal;
-        color: white;
-    }
-
-    .title-subtitle {
-        text-align: center;
-        margin: 0;
-        font-size: 1.5em;
-        font-weight: normal;
-        color: gray;
-    }
-
-    .body-text {
-        font-size: 1.2em;
-        font-weight: normal;
-        color: gray;
-    }
-
-    .title-name-large {
-        font-size: 6em;
-    }
-
-    .title-container {
-        margin: auto;
-    }
-
-    .footer-container {
-        display: flex;
-        justify-content: space-evenly;
-    }
-
 </style>
 
 <PageTitle>Joel's Portfolio | Home</PageTitle>
@@ -80,58 +20,68 @@
     </div>
 </header>
 
-<div class="footer-container">
-    <div class="card-footer w-25">
-        <div >
-            <h5 class="text-light">Specialty</h5>
-            <p class="body-text">
-                My strenghts are building mobile apps and desktop apps using .NET, C#,  I've build web apps with Blazor,
-                HTML5 CSS3 Javascript, React JS and React Native.  I work with databases such as SQLite, MySQL and MS SQL Server.
-            </p>
+<div class="body-container">
+    <div class="container my-3">
+        <div class="card-footer">
+            <div>
+                <h5 class="text-light">Specialty</h5>
+                <p class="body-text">
+                    My strenghts are building mobile apps and desktop apps using .NET, C#,  I've build web apps with Blazor,
+                    HTML5 CSS3 Javascript, React JS and React Native.  I work with databases such as SQLite, MySQL and MS SQL Server.
+                </p>
+            </div>
         </div>
+    </div>
 
-        <div>
+    <div class="container my-3">
+        <div class="card-footer">
+            <h5 class="text-light">Skills</h5>
+
+            <ul class="list-group list-group-flush d-inline-block">
+                <li class="list-group-item bg-transparent body-text d-inline-block">* C#</li>
+                <li class="list-group-item bg-transparent body-text d-inline-block">* .NET</li>
+                <li class="list-group-item bg-transparent body-text d-inline-block">* Blazor</li>
+                <li class="list-group-item bg-transparent body-text d-inline-block">* HTML5</li>
+                <li class="list-group-item bg-transparent body-text d-inline-block">* CSS3</li>
+                <li class="list-group-item bg-transparent body-text d-inline-block">* JavaScript</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container my-3">
+        <div class="card-footer">
             <h5 class="text-light">Frameworks</h5>
             <p class="body-text">This website was build using Blazor .NET 8</p>
         </div>
     </div>
 
-    <div class="card-footer">
-        <h5 class="text-light">Skills</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item bg-transparent body-text">C#</li>
-            <li class="list-group-item bg-transparent body-text">HTML 5</li>
-            <li class="list-group-item bg-transparent body-text">CSS 3</li>
-            <li class="list-group-item bg-transparent body-text">Javascript</li>
-            <li class="list-group-item bg-transparent body-text">Blazor</li>
-            <li class="list-group-item bg-transparent body-text">Networking</li>
-        </ul>
-    </div>
+    <div class="container my-3">
+        <div class="card-footer">
+            <h5 class="text-light">Contact</h5>
 
-    <div class="card-footer">
-        <h5 class="text-light">Contact</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item bg-transparent body-text">
-                <p class="fa fa-user body-text"></p>
-                <span class="mx-2">Joel Santos Reyes</span>
-            
-            </li>
-            <li class="list-group-item bg-transparent">
-                <p class="fa fa-envelope body-text"></p>
-                <a href="mailto:jsr.tech.dev@gmail.com" class="mx-2 body-text text-anim">joeltech12@gmail.com</a>
-            </li>
-            
-            <li class="list-group-item bg-transparent body-text">
-                <p class="fa fa-phone body-text"></p>
-                <span class="mx-2">787.392.4401</span>
-            </li>
+            <ul class="list-group list-group-flush d-inline-block">
+                <li class="list-group-item bg-transparent body-text d-inline-block">
+                    <i class="fa-solid fa-user text-secondary"></i>
+                    <span class="mx-2">Joel Santos Reyes</span>
 
-            <li class="list-group-item bg-transparent">
-                <p class="fa-brands fa-github body-text"></p>
-                <a href="https://github.com/JTech-Dev" target="_blank">
-                    <span class="mx-2 body-text text-anim">Github</span>
-                </a>
-            </li>
-        </ul>
+                </li>
+                <li class="list-group-item bg-transparent d-inline-block">
+                    <i class="fa-solid fa-envelope text-secondary"></i>
+                    <a href="mailto:jsr.tech.dev@gmail.com" class="mx-2 body-text text-anim">joeltech12@gmail.com</a>
+                </li>
+
+                <li class="list-group-item bg-transparent body-text d-inline-block">
+                    <i class="fa-solid fa-phone text-secondary"></i>
+                    <span class="mx-2">787.392.4401</span>
+                </li>
+
+                <li class="list-group-item bg-transparent d-inline-block">
+                    <i class="fa-brands fa-github text-secondary"></i>
+                    <a href="https://github.com/JTech-Dev" target="_blank">
+                        <span class="mx-2 body-text text-anim">Github</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

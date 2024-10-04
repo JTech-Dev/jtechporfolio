@@ -1,93 +1,77 @@
 ﻿@page "/project"
 
 <style>
-
-    .body-text {
-        color: gray;
+    body {
+        background-image: url("/images/code.jpg");
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.9);
     }
-
-    .default-card {
-        background-color: whitesmoke;
-        border: 1px solid #898989;
-        box-shadow: 10px 10px;
-        margin-top: 40px;
-    }
-
-    .default-card:hover {
-        cursor: pointer;
-    }
-
-    .proj-img {
-        width: 300px;
-        height: 200px;
-    }
-
-    .text-container {
-        text-align: center;
-        vertical-align: central;
-        background-color: white;
-    }
-
-    .text-title {
-        color: #080808;
-        font-size: 3rem;
-    }
-    
 </style>
 
 <PageTitle>Joel's Portfolio | Projects</PageTitle>
 
-<div class="container">
+<header class="header-container">
+    <div class="title-container">
+        <h2 class="title-name title-name-large">Projects</h2>
+        <p class="title-subtitle">
+            Fully functionals apps.
+        </p>
+    </div>
+</header>
+
+<div class="main-container">
 
     <div class="text-container">
         <h2 class="text-title">BlazePOS</h2>
+        <p class="img-logo fa fa-fire" ></p>
     </div>
 
-    <div class="d-flex flex-row justify-content-center align-content-center m-2">
-        @* <div class="img-container">
-            
-        </div> *@
-        <img class="proj-img" src="/images/login.jpg" />
+    <div class="proj-content">
 
-        <div class="d-flex flex-column justify-content-center w-50 p-4">
-            <h3 class="text-white">BlazePOS</h3>
+        <div class="img-container">
+            <img class="proj-img" src="/images/login.jpg" />
+        </div>
+
+        <div class="body-text-container">
+
+            <h4>Android OS</h4>
 
             <p class="body-text">
-                This is BlazePOS my most complete project is a fully functional Point of Sale System
-                suitable from small to medium sized business.
+                A lightweight Point of Sale system capable of running small to medium size businesses
+            </p>
+
+            <h4>Technologies</h4>
+
+            <p class="body-text">
+                * C# * .NET * Xamarin Forms * SQLite
             </p>
         </div>
     </div>
 
-    @* <div class="card default-card">
-        <div class="card-header" style="background-color: transparent;">
-            <img class="card-img-top" src="/images/login.jpg" />
-        </div>
-        <div class="card-title d-flex align-items-center p-2" style="background-color: lightgray">
-            <h3>BlazePOS</h3>
-        </div>
-        <div class="card-body">
-            <p>
-                This is BlazePOS my most complete project is a fully functional Point of Sale System
-                suitable from small to medium sized business.
-            </p>
-        </div>
-    </div> *@
-
-    <div>
-        <h2 class="text-light text-center">Service Manager</h2>
+    <div class="text-container">
+        <h2 class="text-title">Service Manager App</h2>
+        <p class="img-logo fa fa-file"></p>
     </div>
 
-    <div class="card default-card">
-        <div class="card-header" style="background-color: transparent;">
-            <img class="card-img-top" src="/images/sm01.png" />
+    <div class="proj-content">
+
+        <div class="img-container">
+            <img class="proj-img" src="/images/sm01.png" />
         </div>
-        <div class="card-title d-flex align-items-center p-2" style="background-color: lightgray">
-            <h3>Service Manager</h3>
-        </div>
-        <div class="card-body">
-            <p>
+
+        <div class="body-text-container">
+
+            <h4>Windows OS</h4>
+
+            <p class="body-text">
                 This is Service Manager a software to keep track of the services made.
+            </p>
+
+            <h4>Technologies</h4>
+
+            <p class="body-text">
+                * C# * .NET * .NET MAUI * SQLite
             </p>
         </div>
     </div>
