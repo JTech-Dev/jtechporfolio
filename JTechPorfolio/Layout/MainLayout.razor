@@ -7,28 +7,31 @@
 
 <MudLayout>
     <MudAppBar Class="bg-black" Elevation="1">
-        @* <img src="/jts-icon-512.png" style="width: 16px; height: 16px;"/> *@ Joel Santos Porfolio
+        Joel Santos Porfolio
         <MudSpacer />
-        <MudIconButton Style="" Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-    </MudAppBar>
-    <MudDrawer Style="background-color: #eaeded" @bind-Open="@isDrawerOpen">
+        <MudButton Color="Color.Inherit" Href="/">Home</MudButton>
+        <MudButton Color="Color.Inherit" Href="/project">Projects</MudButton>
+        <MudButton Color="Color.Inherit" Href="/playground">Playground</MudButton>
+@*         <MudIconButton Style="" Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+ *@    </MudAppBar>
+    @* <MudDrawer Style="background-color: #eaeded" @bind-Open="@isDrawerOpen">
         <MudDrawerHeader Class="bg-dark align-content-center">
             <MudText Class="text-white align-self-center">Navigate To</MudText>
         </MudDrawerHeader>
         <MudDrawerContainer>
             <NavMenu />
         </MudDrawerContainer>
-    </MudDrawer>
+    </MudDrawer> *@
     <MudMainContent>
         @Body
     </MudMainContent>
 </MudLayout>
 
 @code {
-    bool isDrawerOpen = false;
+    // bool isDrawerOpen = false;
 
-    void DrawerToggle()
-    {
-        isDrawerOpen = !isDrawerOpen;
-    }
+    // void DrawerToggle()
+    // {
+    //     isDrawerOpen = !isDrawerOpen;
+    // }
 }
