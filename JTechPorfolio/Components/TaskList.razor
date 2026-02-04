@@ -5,17 +5,17 @@
             <EditForm Model="@newTask" OnValidSubmit="AddTask">
                 <MudGrid>
                     <MudItem>
-                        <MudTextField Variant="Variant.Outlined" T="string" Immediate="false" Label="Title" Class="my-md-5" @bind-Value="taskTitle" />
-                        <MudTextField Variant="Variant.Outlined" T="string" Immediate="false" Label="Input Task" Class="my-md-5" @bind-Value="newTask.Task" />
+                        <MudTextField Variant="Variant.Filled" Immediate="false" Label="Task title" Class="my-md-5" @bind-Value="taskTitle"></MudTextField>
+                        <MudTextField Variant="Variant.Filled" Immediate="false" Label="Enter task" Class="my-md-5" @bind-Value="newTask.Task"></MudTextField>
 
-                        <button class="btn btn-outline-primary m-2" style="width: fit-content" type="submit">Add Task</button>
-                        <button class="btn btn-outline-danger m-2" style="width: fit-content" type="submit" onclick="@ClearTask">Clear Task</button>
+                        <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit">Add Task</MudButton>
+                        <MudButton Variant="Variant.Filled" onclick="@ClearTask">Clear Task</MudButton>
                     </MudItem>
                 </MudGrid>
             </EditForm>
        </div>
 
-        <hr />
+        <MudDivider/>
 
         <div class="my-2 p-2">
 
@@ -30,25 +30,27 @@
                 </MudProgressLinear>
             }
 
-            <ul class="list-group">
-                @foreach (var task in taskList)
-                {
-                    @if (task.IsComplete)
+            <MudPaper>
+                <MudList T="TaskModel">
+                    @foreach (var task in taskList)
                     {
-                        <li class="list-group-item list-group-item-secondary my-1"
-                            @onclick="(() => task.IsComplete = !task.IsComplete)">
-                            <del>@task.Task</del>
-                        </li>
+                        @if (task.IsComplete)
+                        {
+                            <MudListItem class="list-group-item list-group-item-secondary my-1"
+                                @onclick="(() => task.IsComplete = !task.IsComplete)">
+                                <del>@task.Task</del>
+                            </MudListItem>
+                        }
+                        else
+                        {
+                            <MudListItem class="list-group-item list-group-item-success my-1"
+                                @onclick="(() => task.IsComplete = !task.IsComplete)">
+                                @task.Task
+                            </MudListItem>
+                        }
                     }
-                    else
-                    {
-                        <li class="list-group-item list-group-item-success my-1"
-                            @onclick="(() => task.IsComplete = !task.IsComplete)">
-                            @task.Task
-                        </li>
-                    }
-                }
-            </ul>
+                </MudList>
+            </MudPaper>
         </div>
     </div>
 </div>
