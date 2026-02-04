@@ -1,5 +1,23 @@
-﻿<MudNavMenu>
-    <MudLink  Icon="@Icons.Material.Filled.Home" Href="/" Match="NavLinkMatch.All">Home</MudLink>
-    <MudNavLink Icon="@Icons.Material.Filled.DesktopWindows" Href="/project" Match="NavLinkMatch.All">Projects</MudNavLink>
-    <MudNavLink Icon="@Icons.Material.Filled.Gamepad" Href="/playground" Match="NavLinkMatch.All">Playground</MudNavLink>
-</MudNavMenu>
+﻿
+<MudPaper Width="250px" Class="py-3" Elevation="0">
+    <MudNavMenu>
+        <MudLink Color="Color.Inherit" Href="/">Home</MudLink>
+        <MudLink Color="Color.Inherit" Href="/project">Projects</MudLink>
+            <MudNavGroup Title="Playground" Expanded="true">
+                <MudLink Class="mr-4" Color="Color.Inherit" Href="/tasklist">Task List</MudLink>
+                <MudLink Class="mr-4" Color="Color.Inherit" Href="/calculator">Calculator</MudLink>
+                <MudLink Class="mr-4" Color="Color.Inherit" Href="/taxcalculator">Tax Calculator</MudLink>
+            </MudNavGroup>
+    </MudNavMenu>
+</MudPaper>
+
+@code {
+
+    // bool isDrawerOpen = false;
+
+    // void DrawerToggle()
+    // {
+    //     isDrawerOpen = !isDrawerOpen;
+    // }
+
+}

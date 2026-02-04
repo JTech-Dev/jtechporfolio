@@ -7,31 +7,48 @@
 
 <MudLayout>
     <MudAppBar Class="bg-black" Elevation="1">
-        Joel Santos Porfolio
         <MudSpacer />
-        <MudLink Class="mr-4" Color="Color.Inherit" Href="/">Home</MudLink>
-        <MudLink Class="mr-4" Color="Color.Inherit" Href="/project">Projects</MudLink>
-        <MudLink Class="mr-4" Color="Color.Inherit" Href="/playground">Playground</MudLink>
-@*         <MudIconButton Style="" Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
- *@    </MudAppBar>
-    @* <MudDrawer Style="background-color: #eaeded" @bind-Open="@isDrawerOpen">
+         <MudIconButton Style="" Icon="@menuIcon" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+   </MudAppBar>
+    <MudDrawer Style="background-color: #eaeded" @bind-Open="@isDrawerOpen">
         <MudDrawerHeader Class="bg-dark align-content-center">
-            <MudText Class="text-white align-self-center">Navigate To</MudText>
+            <MudText Class="text-white align-self-center">Joel Santos Porfolio</MudText>
         </MudDrawerHeader>
-        <MudDrawerContainer>
-            <NavMenu />
-        </MudDrawerContainer>
-    </MudDrawer> *@
+        <MudPaper Width="250px">
+            <MudNavMenu>
+                <MudNavLink Icon="@Icons.Material.Filled.Home" Color="Color.Inherit" Href="/">Home</MudNavLink>
+                <MudNavLink Icon="@Icons.Material.Filled.Note" Color="Color.Inherit" Href="/project">Projects</MudNavLink>
+                <MudNavGroup Icon="@Icons.Material.Filled.Gamepad" Title="Playground" Expanded="true">
+                    <MudNavLink Icon="@Icons.Material.Filled.Task" Class="mr-4" Color="Color.Inherit" Href="/tasklist">Task List</MudNavLink>
+                    <MudNavLink Icon="@Icons.Material.Filled.Calculate" Class="mr-4" Color="Color.Inherit" Href="/calculator">Calculator</MudNavLink>
+                    <MudNavLink Icon="@Icons.Material.Filled.Money" Class="mr-4" Color="Color.Inherit" Href="/taxcalculator">Tax Calculator</MudNavLink>
+                </MudNavGroup>
+            </MudNavMenu>
+        </MudPaper>
+        @* <MudDrawerContainer>
+            
+        </MudDrawerContainer> *@
+    </MudDrawer> 
     <MudMainContent>
         @Body
     </MudMainContent>
 </MudLayout>
 
 @code {
-    // bool isDrawerOpen = false;
+    bool isDrawerOpen = false;
+    string menuIcon = Icons.Material.Filled.Menu;
 
-    // void DrawerToggle()
-    // {
-    //     isDrawerOpen = !isDrawerOpen;
-    // }
+    void DrawerToggle()
+    {
+        isDrawerOpen = !isDrawerOpen;
+        
+        if (isDrawerOpen)
+        {
+            menuIcon = Icons.Material.Filled.Close;
+        }
+        else
+        {
+            menuIcon = Icons.Material.Filled.Menu;
+        }
+    }
 }
