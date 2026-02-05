@@ -10,8 +10,8 @@
                         <MudTextField Variant="Variant.Outlined" Immediate="false" Label="Task title" Class="my-md-5" @bind-Value="taskTitle"></MudTextField>
                         <MudTextField Variant="Variant.Outlined" Immediate="false" Label="Enter task" Class="my-md-5" @bind-Value="newTask.Task"></MudTextField>
 
-                        <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit">Add Task</MudButton>
-                        <MudButton Variant="Variant.Filled" onclick="@ClearTask">Clear Task</MudButton>
+                        <MudButton Color="@Color.Primary" Variant="Variant.Filled" ButtonType="ButtonType.Submit">Add Task</MudButton>
+                        <MudButton Color="@Color.Primary" Variant="Variant.Filled" onclick="@ClearTask">Clear Task</MudButton>
                     </MudItem>
                 </MudGrid>
             </EditForm>
