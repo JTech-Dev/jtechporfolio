@@ -1,7 +1,7 @@
 ﻿@page "/taxcalculator"
 
 <div class="main-container">
-    <h3 class="text-center text-dark">Tax Calculator</h3>
+    <h3 class="text-center">Tax Calculator</h3>
     <div class="content-contanier mx-auto my-3 p-1">
         <div class="input-container p-3 bg-white">
             <EditForm class="center-content" Model="@newTax" OnValidSubmit="CalculateTax">
@@ -47,36 +47,36 @@
         <div class="p-3">
             <MudGrid>
                 <MudItem xs="3">
-                    <MudText Class="text-white">Tax #1</MudText>
+                    <MudText>Tax #1</MudText>
                     <MudPaper Elevation="1" Class="text-end border-solid fw-bold p-2">$@taxOneAmount</MudPaper>
                 </MudItem>
 
                 <MudItem xs="3">
-                    <MudText Class="text-white">Tax #2</MudText>
+                    <MudText>Tax #2</MudText>
                     <MudPaper Class="text-end border-solid fw-bold p-2">$@taxTwoAmount</MudPaper>
                 </MudItem>
 
                 <MudItem xs="3">
-                    <MudText Class="text-white">Tax #3</MudText>
+                    <MudText>Tax #3</MudText>
                     <MudPaper Class="text-end border-solid fw-bold p-2">$@taxThreeAmount</MudPaper>
                 </MudItem>
 
                 <MudItem xs="3">
-                    <MudText Class="text-white">Tax #4</MudText>
+                    <MudText>Tax #4</MudText>
                     <MudPaper Class="text-end border-solid fw-bold p-2">$@taxFourAmount</MudPaper>
                 </MudItem>
 
                 <MudFlexBreak />
 
                 <MudItem Class="my-1" xs="12">
-                    <MudText Class="text-white">Total Tax Amount</MudText>
+                    <MudText>Total Tax Amount</MudText>
                     <MudPaper Class="text-end border-solid fw-bold p-2">$@totalTax</MudPaper>
                 </MudItem>
 
                 <hr />
 
                 <MudItem xs="12">
-                    <MudText Class="text-white">Total</MudText>
+                    <MudText>Total</MudText>
                     <MudPaper Style="background-color: darkgreen" Class="border-solid p-3">
                         <MudText Class="text-end border-solid fw-bold text-white">$@totalAmount</MudText>
                     </MudPaper>
