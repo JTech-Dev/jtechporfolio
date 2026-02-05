@@ -17,27 +17,27 @@
             @bind-Toggled="_isDarkMode" 
             Icon="@Icons.Material.Filled.DarkMode" 
             ToggledIcon="@Icons.Material.Filled.WbSunny" 
-            ToggledColor="@Color.Default"
+            ToggledColor="@Color.Primary"
             Edge="Edge.Start" />
          <MudIconButton 
              Icon="@menuIcon" 
-             Color="Color.Inherit" 
+             Color="Color.Primary" 
              Edge="Edge.False" 
              OnClick="@((e) => DrawerToggle())" 
              />
    </MudAppBar>
     <MudDrawer Breakpoint="@Breakpoint.Md" Variant="@DrawerVariant.Responsive" @bind-Open="@isDrawerOpen">
-        <MudDrawerHeader Class="bg-dark align-content-center">
-            <MudText Class="text-white align-self-center">Joel Santos Porfolio</MudText>
+        <MudDrawerHeader Class="align-content-center">
+            <MudText Color="Color.Primary" Class="align-self-center">Joel Santos Porfolio</MudText>
         </MudDrawerHeader>
-        <MudPaper>
+        <MudPaper Color="Color.Primary">
             <MudNavMenu>
-                <MudNavLink Icon="@Icons.Material.Filled.Home" Color="Color.Inherit" Href="/">Home</MudNavLink>
-                <MudNavLink Icon="@Icons.Material.Filled.Note" Color="Color.Inherit" Href="/project">Projects</MudNavLink>
+                <MudNavLink Icon="@Icons.Material.Filled.Home" Color="Color.Primary" Href="/">Home</MudNavLink>
+                <MudNavLink Icon="@Icons.Material.Filled.Note" Color="Color.Primary" Href="/project">Projects</MudNavLink>
                 <MudNavGroup Icon="@Icons.Material.Filled.Gamepad" Title="Playground" Expanded="false">
-                    <MudNavLink Icon="@Icons.Material.Filled.Task" Class="mr-4" Color="Color.Inherit" Href="/tasklist">Task List</MudNavLink>
-                    <MudNavLink Icon="@Icons.Material.Filled.Calculate" Class="mr-4" Color="Color.Inherit" Href="/calculator">Calculator</MudNavLink>
-                    <MudNavLink Icon="@Icons.Material.Filled.Money" Class="mr-4" Color="Color.Inherit" Href="/taxcalculator">Tax Calculator</MudNavLink>
+                    <MudNavLink Icon="@Icons.Material.Filled.Task" Class="mr-4" Color="Color.Primary" Href="/tasklist">Task List</MudNavLink>
+                    <MudNavLink Icon="@Icons.Material.Filled.Calculate" Class="mr-4" Color="Color.Primary" Href="/calculator">Calculator</MudNavLink>
+                    <MudNavLink Icon="@Icons.Material.Filled.Money" Class="mr-4" Color="Color.Primary" Href="/taxcalculator">Tax Calculator</MudNavLink>
                 </MudNavGroup>
             </MudNavMenu>
         </MudPaper>
@@ -52,31 +52,33 @@
     {
         PaletteLight = new PaletteLight()
         {
-            Primary = Colors.DeepPurple.Darken2,
+            Primary = Colors.Gray.Darken3,
             Secondary = Colors.Green.Accent4,
-            AppbarBackground = Colors.Gray.Darken1,
-            //Background = #fff,
-            //DrawerBackground = "#ffffff",
-            //Surface = "#ffffff",
+            AppbarBackground = "#f5f5f5",
+            Background = "#f5f5f5",
+            DrawerBackground = "#f5f5f5",
+            Surface = "#f5f5f5",
             TextPrimary = Colors.Gray.Darken4,
             TextSecondary = Colors.Gray.Darken1
         },
         PaletteDark = new PaletteDark()
         {
-            Primary = Colors.Blue.Darken4,
+            Primary = Colors.Gray.Lighten1,
             Secondary = Colors.Green.Accent4,
-            AppbarBackground = Colors.Gray.Darken3,
-            //Background = #fff,
-            //DrawerBackground = "#ffffff",
-            //Surface = "#ffffff",
+            AppbarBackground = Colors.Gray.Darken4,
+            Background = Colors.Gray.Darken4,
+            DrawerBackground = Colors.Gray.Darken3,
+            Surface = Colors.Gray.Darken2,
             TextPrimary = Colors.Gray.Lighten5,
-            TextSecondary = Colors.Gray.Lighten1
+            TextSecondary = Colors.Gray.Lighten1,
+            
         },
     };
 
     private bool _isDarkMode;
 
-    bool isDrawerOpen = true;
+    bool isDrawerOpen = false;
+
     string menuIcon = Icons.Material.Filled.Menu;
 
     void DrawerToggle()

@@ -1,25 +1,22 @@
 ﻿@page "/tasklist"
 
-<div class="main-container">
+<MudPaper Class="m-2 p-2" Width="50%">
     <h3 class="text-center">Task List</h3>
-    <div class="content-container">
-       <div class="m-2 p-2">
-            <EditForm Model="@newTask" OnValidSubmit="AddTask">
-                <MudGrid>
-                    <MudItem>
-                        <MudTextField Variant="Variant.Outlined" Immediate="false" Label="Task title" Class="my-md-5" @bind-Value="taskTitle"></MudTextField>
-                        <MudTextField Variant="Variant.Outlined" Immediate="false" Label="Enter task" Class="my-md-5" @bind-Value="newTask.Task"></MudTextField>
+        <EditForm Model="@newTask" OnValidSubmit="@AddTask">
+            <MudGrid>
+                <MudItem Class="justify-content-center">
+                    <MudTextField Color="Color.Primary" Variant="Variant.Outlined" Immediate="false" Label="Task title" Class="my-md-5" @bind-Value="taskTitle"></MudTextField>
+                    <MudTextField Color="Color.Primary" Variant="Variant.Outlined" Immediate="false" Label="Enter task" Class="my-md-5" @bind-Value="newTask.Task"></MudTextField>
 
-                        <MudButton Color="@Color.Primary" Variant="Variant.Filled" ButtonType="ButtonType.Submit">Add Task</MudButton>
-                        <MudButton Color="@Color.Primary" Variant="Variant.Filled" onclick="@ClearTask">Clear Task</MudButton>
-                    </MudItem>
-                </MudGrid>
-            </EditForm>
-       </div>
+                    <MudButton Color="@Color.Primary" Variant="Variant.Filled" OnClick="@AddTask" ButtonType="ButtonType.Submit">Add Task</MudButton>
+                    <MudButton Color="@Color.Primary" Variant="Variant.Filled" Onclick="@ClearTask">Clear Task</MudButton>
+                </MudItem>
+            </MudGrid>
+        </EditForm>
 
         <MudDivider/>
 
-        <div class="my-2 p-2">
+        <MudPaper Class="my-2 p-2">
 
             <MudText>@taskTitle</MudText>
 
@@ -53,9 +50,8 @@
                     }
                 </MudList>
             </MudPaper>
-        </div>
-    </div>
-</div>
+        </MudPaper>
+</MudPaper>
 
 @code {
     private List<TaskModel> taskList = new();
