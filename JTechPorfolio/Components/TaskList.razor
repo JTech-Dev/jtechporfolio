@@ -1,62 +1,65 @@
 ﻿@page "/tasklist"
 
-<MudPaper Class="m-2 p-2" Width="50%">
-    <h3 class="text-center">Task List</h3>
-        <EditForm Model="@newTask" OnValidSubmit="@AddTask">
-            <MudGrid>
-                <MudItem Class="justify-content-center">
-                    <MudTextField Color="Color.Primary" Variant="Variant.Outlined" Immediate="false" Label="Task title" Class="my-md-5" @bind-Value="taskTitle"></MudTextField>
+<MudContainer Class="d-flex justify-center mud-width-full mt-2">
+    <MudPaper Class="m-2 p-2" Width="50%">
+        <MudText Typo="@Typo.h4" Class="text-center">Task List</MudText>
+            <EditForm Model="@newTask" OnValidSubmit="@AddTask" class="my-2">
+                <MudGrid>
+                    <MudItem Class="justify-content-center">
+                        <MudTextField Color="Color.Primary" Variant="Variant.Outlined" Immediate="false" Label="Task title" Class="my-md-5" @bind-Value="taskTitle"></MudTextField>
                     <MudTextField Color="Color.Primary" Variant="Variant.Outlined" Immediate="false" Label="Enter task" Class="my-md-5" @bind-Value="newTask.Task"></MudTextField>
 
-                    <MudButton Color="@Color.Primary" Variant="Variant.Filled" OnClick="@AddTask" ButtonType="ButtonType.Submit">Add Task</MudButton>
-                    <MudButton Color="@Color.Primary" Variant="Variant.Filled" Onclick="@ClearTask">Clear Task</MudButton>
-                </MudItem>
-            </MudGrid>
-        </EditForm>
+                        <MudButton Color="@Color.Success" Variant="Variant.Filled" OnClick="@AddTask" ButtonType="ButtonType.Submit">Add Task</MudButton>
+                        <MudButton Color="@Color.Error" Variant="Variant.Filled" Onclick="@ClearTask">Clear Task</MudButton>
+                    </MudItem>
+                </MudGrid>
+            </EditForm>
 
-        <MudDivider/>
+            <MudDivider/>
 
-        <MudPaper Class="my-2 p-2">
+            <MudPaper Class="my-2 p-2">
 
-            <MudText>@taskTitle</MudText>
+                <MudText>@taskTitle</MudText>
 
-            @if (taskList.Count > 0)
-            {
-                <MudProgressLinear Color="Color.Success" Rounded="true" Striped="true" Size="Size.Large" Value="@percentProgress" Class="my-2">
-                    <MudText Typo="Typo.subtitle2">
-                        <b>@percentProgress%</b>
-                    </MudText>
-                </MudProgressLinear>
-            }
+                @if (taskList.Count > 0)
+                {
+                    <MudProgressLinear Color="Color.Success" Rounded="true" Striped="true" Size="Size.Large" Value="@percentProgress" Class="my-2">
+                        <MudText Typo="Typo.subtitle2">
+                            <b>@percentProgress%</b>
+                        </MudText>
+                    </MudProgressLinear>
+                }
 
-            <MudPaper>
-                <MudList T="TaskModel">
-                    @foreach (var task in taskList)
-                    {
-                        @if (task.IsComplete)
+                <MudPaper>
+                    <MudList T="TaskModel">
+                        @foreach (var task in taskList)
                         {
-                            <MudListItem class="list-group-item list-group-item-secondary my-1"
-                                @onclick="(() => task.IsComplete = !task.IsComplete)">
-                                <del>@task.Task</del>
-                            </MudListItem>
+                            @if (task.IsComplete)
+                            {
+                                <MudListItem class="list-group-item list-group-item-secondary my-1"
+                                    @onclick="(() => task.IsComplete = !task.IsComplete)">
+                                    <del>@task.Task</del>
+                                </MudListItem>
+                            }
+                            else
+                            {
+                                <MudListItem class="list-group-item list-group-item-success my-1"
+                                    @onclick="(() => task.IsComplete = !task.IsComplete)">
+                                    @task.Task
+                                </MudListItem>
+                            }
                         }
-                        else
-                        {
-                            <MudListItem class="list-group-item list-group-item-success my-1"
-                                @onclick="(() => task.IsComplete = !task.IsComplete)">
-                                @task.Task
-                            </MudListItem>
-                        }
-                    }
-                </MudList>
+                    </MudList>
+                </MudPaper>
             </MudPaper>
-        </MudPaper>
-</MudPaper>
+    </MudPaper>
+</MudContainer>
 
 @code {
     private List<TaskModel> taskList = new();
     private TaskModel newTask = new();
     private string? taskTitle = "";
+    //private MudTextField<string> _taskField;
 
     private int percentProgress
     {
@@ -66,7 +69,7 @@
         }
     }
 
-    private void AddTask()
+    private async void AddTask()
     {
         if (string.IsNullOrWhiteSpace(newTask.Task))
             return;
@@ -75,7 +78,10 @@
 
         newTask = new();
 
-
+        // if (_taskField is not null)
+        // {
+        //     await _taskField.FocusAsync();
+        // }
     }
 
     private void ClearTask()
