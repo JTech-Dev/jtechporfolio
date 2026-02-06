@@ -1,13 +1,13 @@
 ﻿@page "/taxcalculator"
 
-<div class="main-container">
-    <h3 class="text-center">Tax Calculator</h3>
-    <div class="content-contanier mx-auto my-3 p-1">
-        <div class="input-container p-3 bg-white">
+<MudContainer Class="d-flex justify-center mud-width-full mt-2">
+    <MudPaper Width="50%" Class="content-contanier mx-auto my-3 p-1">
+        <MudText Typo="@Typo.h4" Class="text-center">Tax Calculator</MudText>
+        <MudPaper class="input-container p-3">
             <EditForm class="center-content" Model="@newTax" OnValidSubmit="CalculateTax">
                 <MudGrid>
                     <MudItem xs="12">
-                        <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                        <MudNumericField Color="Color.Primary" Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
                                          Immediate="false" Label="Input Amount" Format="N2" @bind-Value="newTax.InputAmount" Class="my-lg-5 num-text-align" />
 
                     </MudItem>
@@ -15,18 +15,18 @@
                     <MudDivider />
 
                     <MudItem xs="6" Class="d-flex-inline">
-                        <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                        <MudNumericField Color="Color.Primary" Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
                                          Immediate="false" Label="Tax #1" Format="N2" @bind-Value="newTax.TaxOneAmount" Class="my-md-5 num-text-align" />
 
-                        <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                        <MudNumericField Color="Color.Primary" Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
                                          Immediate="false" Label="Tax #2" Format="N2" @bind-Value="newTax.TaxTwoAmount" Class="my-md-5 num-text-align" />
                     </MudItem>
 
                     <MudItem xs="6">
-                        <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                        <MudNumericField Color="Color.Primary" Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
                                          Immediate="false" Label="Tax #3" Format="N2" @bind-Value="newTax.TaxThreeAmount" Class="my-md-5 num-text-align" />
 
-                        <MudNumericField Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
+                        <MudNumericField Color="Color.Primary" Variant="Variant.Outlined" T="decimal" HideSpinButtons="true" Culture="System.Globalization.CultureInfo.CurrentCulture"
                                          Immediate="false" Label="Tax #4" Format="N2" @bind-Value="newTax.TaxFourAmount" Class="my-md-5 num-text-align" />
                     </MudItem>
                 </MudGrid>
@@ -34,17 +34,17 @@
 
             <MudGrid class="center-content">
                 <MudItem xs="6">
-                    <MudButton Class="w-50" Variant="Variant.Outlined" OnClick="CalculateTax" Color="Color.Primary">Calculate</MudButton>
+                    <MudButton Class="w-50" Variant="Variant.Filled" OnClick="CalculateTax" Color="Color.Success">Calculate</MudButton>
                 </MudItem>
                 <MudItem xs="6">
-                    <MudButton Class="w-50" Variant="Variant.Outlined" OnClick="ClearValues" Color="Color.Error">Clear</MudButton>
+                    <MudButton Class="w-50" Variant="Variant.Filled" OnClick="ClearValues" Color="Color.Error">Clear</MudButton>
                 </MudItem>
             </MudGrid>
-        </div>
+        </MudPaper>
 
-        <hr />
+        <MudDivider />
 
-        <div class="p-3">
+        <MudContainer Class="p-3">
             <MudGrid>
                 <MudItem xs="3">
                     <MudText>Tax #1</MudText>
@@ -73,7 +73,7 @@
                     <MudPaper Class="text-end border-solid fw-bold p-2">$@totalTax</MudPaper>
                 </MudItem>
 
-                <hr />
+                <MudDivider />
 
                 <MudItem xs="12">
                     <MudText>Total</MudText>
@@ -82,9 +82,9 @@
                     </MudPaper>
                 </MudItem>
             </MudGrid>
-        </div>
-    </div>
-</div>
+        </MudContainer>
+    </MudPaper>
+</MudContainer>
 
 @code {
     TaxCalculatorModel newTax = new();

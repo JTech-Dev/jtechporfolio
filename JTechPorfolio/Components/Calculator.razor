@@ -1,9 +1,9 @@
 ﻿@page "/calculator"
 
-<div class="main-container">
+<MudContainer Class="d-flex justify-center mud-width-full mt-2">
 
-    <h3 class="text-center">Calculator</h3>
-    <MudPaper Class="p-2">
+    <MudPaper Width="50%" Class="p-2">
+        <MudText Typo="@Typo.h4" Class="text-center">Calculator</MudText>
         <div class="calculator-display-sm">
             <input type="text" class="display-value-sm" readonly value="@PreviusDisplayValue" />
         </div>
@@ -39,7 +39,7 @@
         </div>
 
     </MudPaper>
-</div>
+</MudContainer>
 
 @code {
     private string CurrentDisplayValue = "0";
