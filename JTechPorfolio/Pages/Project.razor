@@ -1,103 +1,72 @@
 ﻿@page "/project"
 
-<style>
-    body {
-        background-image: url("/images/code.jpg");
-        background-blend-mode: multiply;
-        background-size: cover;
-        background-color: rgba(0, 0, 0, 0.9);
-    }
-</style>
-
 <PageTitle>Joel's Portfolio | Projects</PageTitle>
 
-<header class="header-container">
-    <div class="title-container">
-        <h2 class="title-name title-name-large">Projects</h2>
-        <p class="title-subtitle">
-            Fully functionals apps.
-        </p>
-    </div>
-</header>
+<MudText Typo="Typo.h2" Class="text-lg-center">Projects</MudText>
+<MudText Typo="Typo.body1" Class="text-center">
+    Fully functionals apps.
+</MudText>
 
-<MudContainer>
-    <MudCard>
-        <MudCardMedia Image="/images/login.jpg" Height="200"/>
-        <MudCardContent>
-            <MudText Typo="Typo.h5">BlazePOS</MudText>
-            <MudText Typo="Typo.body2">This is a POS software designed for medium to small business.</MudText>
-            <MudText Typo="Typo.body2">* Coffee Shop * Bakery * Retail * Restaurant</MudText>
-        </MudCardContent>
-        <MudCardActions>
-            <MudButton Variant="Variant.Text" Color="Color.Primary">Learn more</MudButton>
-        </MudCardActions>
-    </MudCard>
+<MudContainer Class="justify-center mud-width-full mt-2">
+
+    @* BlazePOS *@
+    <MudPaper Elevation="10" Class="rounded-lg my-2">
+        <MudImage Fluid="true" Class="rounded-lg" src="/images/login.jpg" />
+    </MudPaper>
+
+    <MudPaper Elevation="10" Class="rounded my-2">
+
+        <MudText Typo="Typo.h2" Class="text-center">BlazePOS</MudText>
+
+        <MudDivider/>
+
+        <MudText Class="text-center" Typo="Typo.h4">Android OS</MudText>
+
+        <MudText Typo="Typo.body1" Class="text-center">
+            A lightweight Point of Sale system capable of running small to medium size businesses
+        </MudText>
+
+        <MudDivider />
+
+        <MudText Class="text-center" Typo="Typo.h4">Technologies</MudText>
+
+        <MudText Typo="Typo.body1" Class="text-center">
+            * C# * .NET * Xamarin Forms * SQLite
+        </MudText>
+        <div class="d-flex justify-center">
+            <MudButton Target="_blank" Href="https://jtech-dev.github.io/jtechsystems/blazepos.html" Variant="Variant.Text" Color="Color.Secondary">Learn more</MudButton>
+        </div>
+    </MudPaper>
+
+    @* Service Manager *@
+    <MudPaper Elevation="10" Class="rounded-lg my-2">
+        <MudImage Fluid="true" Class="rounded-lg" src="/images/sm01.png" />
+    </MudPaper>
+
+    <MudPaper Elevation="10" Class="rounded my-2">
+
+        <MudText Typo="Typo.h2" Class="text-center">Service Manager</MudText>
+
+        <MudDivider />
+
+        <MudText Class="text-center" Typo="Typo.h4">Windows OS</MudText>
+
+        <MudText Typo="Typo.body1" Class="text-center">
+            This is Service Manager a software to keep track of services like closed, sold or pending.
+        </MudText>
+
+        <MudDivider />
+
+        <MudText Class="text-center" Typo="Typo.h4">Technologies</MudText>
+
+        <MudText Typo="Typo.body1" Class="text-center">
+            * C# * .NET * .NET MAUI * SQLite
+        </MudText>
+        <div class="d-flex justify-center">
+            <MudButton Target="_blank" Href="https://jtech-dev.github.io/jtechsystems/" Variant="Variant.Text" Color="Color.Secondary">Learn more</MudButton>
+        </div>
+    </MudPaper>
 </MudContainer>
-
-<div class="main-container">
-
-    <div class="text-container">
-        <div class="text-container-title">
-            <h2 class="text-title">BlazePOS</h2>
-            <i class="img-logo fa fa-fire"></i>
-        </div>
-
-        <div class="body-text-container">
-
-            <h4>Android OS</h4>
-
-            <p class="body-text">
-                A lightweight Point of Sale system capable of running small to medium size businesses
-            </p>
-
-            <h4>Technologies</h4>
-
-            <p class="body-text">
-                * C# * .NET * Xamarin Forms * SQLite
-            </p>
-        </div>
-    </div>
-
-    <div class="proj-content">
-
-        <div class="img-container">
-            <img class="proj-img" src="/images/login.jpg" />
-        </div>
-
-        
-    </div>
-
-    <div class="text-container">
-        <div class="text-container-title">
-            <h2 class="text-title">Service Manager App</h2>
-            <i class="img-logo fa fa-file"></i>
-        </div>
-
-        <div class="body-text-container">
-
-            <h4>Windows OS</h4>
-
-            <p class="body-text">
-                This is Service Manager a software to keep track of the services made.
-            </p>
-
-            <h4>Technologies</h4>
-
-            <p class="body-text">
-                * C# * .NET * .NET MAUI * SQLite
-            </p>
-        </div>
-    </div>
-
-    <div class="proj-content">
-
-        <div class="img-container">
-            <img class="proj-img" src="/images/sm01.png" />
-        </div>
-
-        
-    </div>
-</div>
 
 @code {
 
