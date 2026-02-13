@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\images\code.jpg" />
+    <Content Remove="wwwroot\images\jtlogo.png" />
     <Content Remove="wwwroot\images\sale.jpg" />
     <Content Remove="wwwroot\images\sm01.png" />
     <Content Remove="wwwroot\images\sm02.png" />
@@ -20,6 +21,7 @@
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\images\blazeposLogo-lg.png" />
     <EmbeddedResource Include="wwwroot\images\code.jpg" />
+    <EmbeddedResource Include="wwwroot\images\jtlogo.png" />
     <EmbeddedResource Include="wwwroot\images\login.jpg" />
     <EmbeddedResource Include="wwwroot\images\sale.jpg" />
     <EmbeddedResource Include="wwwroot\images\sm01.png" />

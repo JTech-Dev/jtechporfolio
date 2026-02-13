@@ -27,8 +27,9 @@
              />
    </MudAppBar>
     <MudDrawer Breakpoint="@Breakpoint.Md" Variant="@DrawerVariant.Responsive" @bind-Open="@isDrawerOpen">
-        <MudDrawerHeader Class="align-content-center">
-            <MudText Color="Color.Primary" Class="align-self-center">Joel Santos Porfolio</MudText>
+        <MudDrawerHeader Class="d-flex align-items-center">
+           <MudImage style="width: 20px; height: 20px;" Class="img-fluid mx-2" Fluid="true" Src="/images/jtlogo.png" />
+           <MudText Color="Color.Primary" Class="text-center fw-bold">JS Portfolio</MudText>
         </MudDrawerHeader>
         <MudPaper Color="Color.Primary">
             <MudNavMenu>
