@@ -2,67 +2,76 @@
 
 <PageTitle>Joel's Portfolio | Projects</PageTitle>
 
-<MudText Typo="Typo.h2" Class="text-lg-center">Projects</MudText>
-<MudText Typo="Typo.body1" Class="text-center">
-    Fully functionals apps.
-</MudText>
+<div class="my-5">
+    <MudText Typo="Typo.h1" Class="fw-bold text-lg-center">Projects</MudText>
+    <MudText Typo="Typo.body1" Class="text-center">
+        Fully functionals apps.
+    </MudText>
+</div>
+
+@* BlazePOS *@
+<MudPaper Elevation="10" Class="rounded-0 p-3 my-2">
+
+    <MudText Typo="Typo.h4" Class="text-center fw-bold">BlazePOS</MudText>
+
+    <MudText Typo="Typo.body1" Class="text-center">
+        A lightweight Point of Sale system perfect for Coffee Shops, Bakery and Retail Stores.
+    </MudText>
+
+    <MudDivider />
+
+    <MudText Class="text-center" Typo="Typo.h5">Technologies</MudText>
+
+    <MudText Typo="Typo.body1" Class="text-center">
+        * C# * .NET * Xamarin Forms * SQLite
+    </MudText>
+    <div class="d-flex justify-center">
+        <MudButton Target="_blank" Href="https://jtech-dev.github.io/jtechsystems/blazepos.html" Variant="Variant.Text" Color="Color.Secondary">Learn more</MudButton>
+    </div>
+</MudPaper>
 
 <MudContainer Class="justify-center mud-width-full mt-2">
 
-    @* BlazePOS *@
     <MudPaper Elevation="10" Class="rounded-lg my-2">
         <MudImage Fluid="true" Class="rounded-lg" src="/images/login.jpg" />
     </MudPaper>
 
-    <MudPaper Elevation="10" Class="rounded my-2">
-
-        <MudText Typo="Typo.h3" Class="text-center fw-bold">BlazePOS</MudText>
-
-        @* <MudText Class="text-center" Typo="Typo.h4">Android OS</MudText> *@
-
-        <MudText Typo="Typo.body1" Class="text-center">
-            A lightweight Point of Sale system perfect for Coffee Shops, Bakery and Retail Stores.
-        </MudText>
-
-        <MudDivider />
-
-        <MudText Class="text-center" Typo="Typo.h5">Technologies</MudText>
-
-        <MudText Typo="Typo.body1" Class="text-center">
-            * C# * .NET * Xamarin Forms * SQLite
-        </MudText>
-        <div class="d-flex justify-center">
-            <MudButton Target="_blank" Href="https://jtech-dev.github.io/jtechsystems/blazepos.html" Variant="Variant.Text" Color="Color.Secondary">Learn more</MudButton>
-        </div>
+    <MudPaper Elevation="10" Class="rounded-lg my-2">
+        <MudImage Fluid="true" Class="rounded-lg" src="/images/sale.jpg" />
     </MudPaper>
+</MudContainer>
 
-    @* Service Manager *@
+@* Service Manager *@
+<MudPaper Elevation="10" Class="rounded-0 p-3 my-2">
+
+    <MudText Typo="Typo.h4" Class="text-center fw-bold">Service Manager</MudText>
+
+    <MudText Typo="Typo.body1" Class="text-center">
+        This is Service Manager a software to keep track of services like closed, sold or pending.
+    </MudText>
+
+    <MudDivider />
+
+    <MudText Class="text-center" Typo="Typo.h5">Technologies</MudText>
+
+    <MudText Typo="Typo.body1" Class="text-center">
+        * C# * .NET * .NET MAUI * SQLite
+    </MudText>
+    <div class="d-flex justify-center">
+        <MudButton Target="_blank" Href="https://jtech-dev.github.io/jtechsystems/" Variant="Variant.Text" Color="Color.Secondary">Learn more</MudButton>
+    </div>
+</MudPaper>
+
+<MudContainer Class="justify-center mud-width-full mt-2">
     <MudPaper Elevation="10" Class="rounded-lg my-2">
         <MudImage Fluid="true" Class="rounded-lg" src="/images/sm01.png" />
     </MudPaper>
 
-    <MudPaper Elevation="10" Class="rounded my-2">
-
-        <MudText Typo="Typo.h3" Class="text-center fw-bold">Service Manager</MudText>
-
-        @* <MudText Class="text-center" Typo="Typo.h4">Windows OS</MudText> *@
-
-        <MudText Typo="Typo.body1" Class="text-center">
-            This is Service Manager a software to keep track of services like closed, sold or pending.
-        </MudText>
-
-        <MudDivider />
-
-        <MudText Class="text-center" Typo="Typo.h5">Technologies</MudText>
-
-        <MudText Typo="Typo.body1" Class="text-center">
-            * C# * .NET * .NET MAUI * SQLite
-        </MudText>
-        <div class="d-flex justify-center">
-            <MudButton Target="_blank" Href="https://jtech-dev.github.io/jtechsystems/" Variant="Variant.Text" Color="Color.Secondary">Learn more</MudButton>
-        </div>
+    <MudPaper Elevation="10" Class="rounded-lg my-2">
+        <MudImage Fluid="true" Class="rounded-lg" src="/images/sm02.png" />
     </MudPaper>
 </MudContainer>
+
 
 @code {
 
